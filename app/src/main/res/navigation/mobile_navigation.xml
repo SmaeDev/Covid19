@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.smaedev.covi19.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home">
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_country"
+        android:name="com.smaedev.covi19.ui.country.CountryFragment"
+        android:label="@string/menu_country"
+        tools:layout="@layout/fragment_country" />
+
+    <fragment
+        android:id="@+id/nav_about"
+        android:name="com.smaedev.covi19.ui.about.AboutFragment"
+        android:label="@string/menu_about"
+        tools:layout="@layout/fragment_about" />
+
+    <fragment
+        android:id="@+id/nav_advice"
+        android:name="com.smaedev.covi19.ui.about.AboutFragment"
+        android:label="@string/menu_advice"
+    tools:layout="@layout/fragment_about" />
+</navigation>
