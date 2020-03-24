@@ -8,7 +8,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
-@Database(entities = [Country::class], version = 3, exportSchema = false)
+@Database(entities = [Country::class], version = 1, exportSchema = false)
 abstract class AppDatabase() : RoomDatabase() {
 
     abstract fun countryDao(): CountryDao
@@ -21,24 +21,8 @@ abstract class AppDatabase() : RoomDatabase() {
             super.onOpen(db)
             INSTANCE?.let { database ->
                 scope.launch {
-                    var countryDao = database.countryDao()
+                    val countryDao = database.countryDao()
                     countryDao.deleteAll()
-
-                    // Add sample countrie.
-                    /*var country = Country("France",15, 155, 170)
-                    countryDao.insert(country)
-
-                    country = Country("Chine",19, 195, 170)
-                    countryDao.insert(country)
-
-                    country = Country("Italie",15, 155, 170)
-                    countryDao.insert(country)
-
-                    country = Country("Sénégal",15, 155, 170)
-                    countryDao.insert(country)
-
-                    country = Country("Togo",15, 155, 170)
-                    countryDao.insert(country)*/
 
                 }
             }
@@ -57,7 +41,7 @@ abstract class AppDatabase() : RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context!!.applicationContext,
                     AppDatabase::class.java,
-                    "taabour_database"
+                    "covid19_database"
 
                 ).addCallback(CountryDatabaseCallback(scope)).build()
                 INSTANCE = instance

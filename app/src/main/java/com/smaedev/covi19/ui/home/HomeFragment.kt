@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.smaedev.covi19.Adapter.CountryListAdapter
 import com.smaedev.covi19.R
@@ -35,7 +36,7 @@ class HomeFragment : Fragment() {
         val root = inflater.inflate(R.layout.fragment_home, container, false)
 
         val tvTotalPays = root.findViewById<TextView>(R.id.tvNbPays)
-        var nbPays : String = CountryListAdapter.totalpays.toString()
+        val nbPays : String = CountryListAdapter.totalpays.toString()
         tvTotalPays.setText(nbPays)
 
 
@@ -46,25 +47,9 @@ class HomeFragment : Fragment() {
 
         val btIPays = root.findViewById<ImageButton>(R.id.btIPays)
         btIPays.setOnClickListener {
-            val countryFragment = CountryFragment()
-            val fragmentManager: FragmentManager = activity!!.supportFragmentManager
-            val fragmenttransaction: FragmentTransaction = fragmentManager.beginTransaction()
-            fragmenttransaction.replace(R.id.nav_host_fragment, countryFragment)
-                .addToBackStack(null)
-                .commit()
+            findNavController().navigate(R.id.nav_country, null)
         }
 
         return root
     }
-
-    /*override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view!!, savedInstanceState)
-
-        //Log.d(TAG, "initRecyclerView: init recyclerview");
-        val layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-        recyclerViewPays?.setLayoutManager(layoutManager)
-        recyclerViewPays?.setHasFixedSize(true)
-        //loadcountries()
-    }*/
-
 }

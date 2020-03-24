@@ -18,7 +18,7 @@ class MainAdapter(val countryFeed: CountryFeed) : RecyclerView.Adapter<CustomVie
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewHolder {
-        val layoutInflater = LayoutInflater.from(parent?.context)
+        val layoutInflater = LayoutInflater.from(parent.context)
         val cellforRoww = layoutInflater.inflate(R.layout.recyclerview_country, parent, false)
         return CustomViewHolder(cellforRoww)
     }
@@ -26,11 +26,8 @@ class MainAdapter(val countryFeed: CountryFeed) : RecyclerView.Adapter<CustomVie
     override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
         val country = countryFeed.countries_stat.get(position)
         //holder.userItemView.text = current.countryName
-        holder?.view?.tvCountry?.text = country.country_name
+        holder.view.tvCountry?.text = country.country_name
     }
-
-
-
 
 }
 class CustomViewHolder(val view: View) : RecyclerView.ViewHolder(view) {

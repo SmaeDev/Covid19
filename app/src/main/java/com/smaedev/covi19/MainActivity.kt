@@ -3,6 +3,7 @@ package com.smaedev.covi19
 import android.app.SearchManager
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
 import android.widget.CursorAdapter
@@ -20,17 +21,22 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.navigation.NavigationView
 import com.google.gson.GsonBuilder
+import com.smaedev.covi19.Adapter.FragDetailCountry
+import com.smaedev.covi19.ui.country.CountryFragment
 import okhttp3.*
 import java.io.IOException
 
 class MainActivity : AppCompatActivity() {
+
+    private var backPressedTimer: Long = 0
+    private var backToast: Toast? = null
+
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     var searchView: SearchView? = null
     private var myAdapter: SimpleCursorAdapter? = null
 
     companion object {
-        var fragment: FragmentManager? = null
         private var instance: MainActivity? = null
         fun applicationContext() : Context? {
             return instance?.applicationContext
@@ -38,15 +44,11 @@ class MainActivity : AppCompatActivity() {
     }
     init {
         instance = this
-        fragment = supportFragmentManager
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        /*recyclerviewCountry.layoutManager = LinearLayoutManager(this)
-        fetchJson()*/
 
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
@@ -81,62 +83,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.main, menu)
-
-        // Get Search item from action bar and Get Search service
-
-        // Get Search item from action bar and Get Search service
-        /*val searchItem = menu.findItem(R.id.action_search)
-        val searchManager = this@MainActivity.getSystemService(Context.SEARCH_SERVICE) as SearchManager
-        if (searchItem != null) {
-            searchView = searchItem.actionView as SearchView
-        }
-        if (searchView != null) {
-            searchView!!.setSearchableInfo(searchManager.getSearchableInfo(this@MainActivity.componentName))
-            searchView!!.isIconified = false
-            searchView!!.suggestionsAdapter = myAdapter
-            // Getting selected (clicked) item suggestion
-            searchView!!.setOnSuggestionListener(object : OnSuggestionListener() {
-                fun onSuggestionClick(position: Int): Boolean {
-                    // Add clicked text to search box
-                    val ca: CursorAdapter = searchView!!.suggestionsAdapter
-                    val cursor: Cursor = ca.getCursor()
-                    cursor.moveToPosition(position)
-                    val selected = cursor.getString(cursor.getColumnIndex("libelle"))
-                    searchView!!.setQuery(selected, false)
-                    val bundle = Bundle()
-                    bundle.putString("sousproduit", selected)
-                    val fragSousProduit = FragSousProduit()
-                    fragSousProduit.setArguments(bundle)
-                    MainActivity.fragmentManager.beginTransaction()
-                        .replace(R.id.fragContainer, fragSousProduit).addToBackStack(null).commit()
-                    return true
-                }
-
-                fun onSuggestionSelect(position: Int): Boolean {
-                    return true
-                }
-            })
-            searchView!!.setOnQueryTextListener(object : OnQueryTextListener() {
-                fun onQueryTextSubmit(s: String?): Boolean {
-                    return false
-                }
-
-                fun onQueryTextChange(s: String): Boolean {
-
-                    // Filter data
-                    val mc =
-                        MatrixCursor(arrayOf(BaseColumns._ID, "libelle"))
-                    for (i in strArrData.indices) {
-                        if (strArrData.get(i).toLowerCase().startsWith(s.toLowerCase())) mc.addRow(
-                            arrayOf<Any>(i, strArrData.get(i))
-                        )
-                    }
-                    myAdapter?.changeCursor(mc)
-                    return false
-                }
-            })
-        }*/
-
         return true
     }
 
@@ -145,38 +91,7 @@ class MainActivity : AppCompatActivity() {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 
-
-    fun fetchJson(){
-        println("Test")
-        val request= Request.Builder()
-            .url("https://coronavirus-monitor.p.rapidapi.com/coronavirus/cases_by_country.php")
-            .get()
-            .addHeader("x-rapidapi-host", "coronavirus-monitor.p.rapidapi.com")
-            .addHeader("x-rapidapi-key", "2547575680msh1aee1093c9acb63p1f21b9jsn5ba8aa6b9d5e")
-            .build()
-        val client = OkHttpClient()
-        client.newCall(request).enqueue(object : Callback {
-            override fun onResponse(call: Call, response: Response) {
-                val body = response?.body?.string()
-                println("ok"+body)
-
-                val gson = GsonBuilder().create()
-                val homeFeed = gson.fromJson(body, HomeFeed::class.java)
-
-                runOnUiThread(){
-                    ///recyclerviewCountry.adapter = MainAdapter(homeFeed)
-                }
-
-            }
-
-            override fun onFailure(call: Call, e: IOException) {
-                TODO("Not yet implemented")
-            }
-
-        })
-    }
-
-    override fun onNewIntent(intent: Intent) {
+   /* override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
         if (Intent.ACTION_SEARCH == intent.action) {
             val query = intent.getStringExtra(SearchManager.QUERY)
@@ -184,11 +99,26 @@ class MainActivity : AppCompatActivity() {
                 searchView!!.clearFocus()
                 Toast.makeText(baseContext, "bien" + SearchManager.QUERY, Toast.LENGTH_SHORT).show()
             }
-
-            // User entered text and pressed search button. Perform task ex: fetching data from database and display
         }
-    }
+    }*/
+
+    /*override fun onBackPressed() {
+       if (backPressedTimer + 2000>System.currentTimeMillis()){
+           backToast?.cancel()
+           super.onBackPressed()
+           return
+       }
+       else{
+           backToast = Toast.makeText(baseContext, "Appuyez encore pour fermer l'application" + SearchManager.QUERY, Toast.LENGTH_SHORT)
+           backToast?.show()
+       }
+       backPressedTimer = System.currentTimeMillis()
+    }*/
 }
 
 class HomeFeed(val countries_stat : List<Country>)
 class Country(val country_name: String, val cases: String)
+
+interface IOnBackPressed {
+    fun onBackPressed(): Boolean
+}

@@ -1,15 +1,24 @@
 package com.smaedev.covi19.Adapter
 
+import android.app.SearchManager
 import android.content.Context
+import android.net.Uri
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
+import androidx.activity.OnBackPressedDispatcher
+import androidx.activity.addCallback
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-
+import androidx.fragment.app.FragmentTransaction
 import com.smaedev.covi19.R
+import com.smaedev.covi19.ui.country.CountryFragment
+
 
 class FragDetailCountry : Fragment() {
 
@@ -46,17 +55,21 @@ class FragDetailCountry : Fragment() {
         active_cases = root.findViewById(R.id.tvActive)
         total_cases_per_1m_population = root.findViewById(R.id.tvCasePer1m)
 
-        val countrynameKey = arguments!!.getString("COUNTRYNAME_KEY")
-        val casesKey = arguments!!.getString("CASES_KEY")
-        val deathKey = arguments!!.getString("DEATH_KEY")
-        val totalRecKey = arguments!!.getString("TOTAL_REC_KEY")
-        val newDeathKey = arguments!!.getString("NEWDEATH_KEY")
-        val newCaseKey = arguments!!.getString("NEWCASE_KEY")
-        val criticalKey = arguments!!.getString("CRITICAL_KEY")
-        val activecasesKey = arguments!!.getString("ACTIVECASE_KEY")
-        val totalper1mKey = arguments!!.getString("TOTALPER1M_KEY")
+        val countrynameKey = requireArguments().getString("COUNTRYNAME_KEY")
 
-        country?.setText(countrynameKey)
+        (activity as AppCompatActivity?)!!.supportActionBar!!.title = "Pays : "+countrynameKey
+
+        val casesKey = requireArguments().getString("CASES_KEY")
+        val deathKey = requireArguments().getString("DEATH_KEY")
+        val totalRecKey = requireArguments().getString("TOTAL_REC_KEY")
+        val newDeathKey = requireArguments().getString("NEWDEATH_KEY")
+        val newCaseKey = requireArguments().getString("NEWCASE_KEY")
+        val criticalKey = requireArguments().getString("CRITICAL_KEY")
+        val activecasesKey = requireArguments().getString("ACTIVECASE_KEY")
+        val totalper1mKey = requireArguments().getString("TOTALPER1M_KEY")
+
+        //country?.setText("Les statistiques pour : "+countrynameKey)
+        country?.setText("Les statistiques")
         cases?.setText(casesKey)
         death?.setText(deathKey)
         total_recovered?.setText(totalRecKey)
@@ -71,8 +84,6 @@ class FragDetailCountry : Fragment() {
 
     companion object {
 
-        var fragment: FragmentManager? = null
-
         private var instance: FragDetailCountry? = null
 
         fun applicationContext() : Context? {
@@ -82,6 +93,6 @@ class FragDetailCountry : Fragment() {
 
     init {
         instance = this
-        fragment = fragmentManager
     }
+
 }

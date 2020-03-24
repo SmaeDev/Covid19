@@ -3,12 +3,13 @@ package com.smaedev.covi19.DB
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
+import androidx.room.OnConflictStrategy
 import androidx.room.Query
 
 @Dao
 interface CountryDao {
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(country: Country)
 
     @Query("SELECT * FROM countries WHERE countries.country_name LIKE :country")

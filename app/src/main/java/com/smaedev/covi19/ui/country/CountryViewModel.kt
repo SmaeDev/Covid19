@@ -20,11 +20,7 @@ class CountryViewModel : ViewModel() {
         allCountries = countryRepository.allCountries
     }
 
-    fun insert(country: String, death: Int, ill: Int, total: Int) = viewModelScope.launch {
-        countryRepository.insertCountry(country,death, ill, total)
-    }
-
-    suspend fun createC(username: String, password: String) {
-        //countryRepository.insertCountry(username, password)
+    fun insertCountry(country : Country) = viewModelScope.launch {
+        countryRepository.insert(country)
     }
 }
