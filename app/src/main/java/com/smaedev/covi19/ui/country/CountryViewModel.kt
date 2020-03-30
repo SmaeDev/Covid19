@@ -3,10 +3,10 @@ package com.smaedev.covi19.ui.country
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.smaedev.covi19.DB.AppDatabase
-import com.smaedev.covi19.DB.Country
+import com.smaedev.covi19.AppDatabase
 import com.smaedev.covi19.MainActivity
-import com.smaedev.covi19.Repository.CountryRepository
+import com.smaedev.covi19.db.Country
+import com.smaedev.covi19.repository.CountryRepository
 import kotlinx.coroutines.launch
 
 class CountryViewModel : ViewModel() {
@@ -15,7 +15,7 @@ class CountryViewModel : ViewModel() {
     val allCountries: LiveData<List<Country>>
 
     init {
-        val countryDao = AppDatabase.getDatabase(MainActivity.applicationContext(), viewModelScope).countryDao()
+        val countryDao = AppDatabase.getDatabase(MainActivity.mainActivityContext(), viewModelScope).countryDao()
         countryRepository = CountryRepository(countryDao)
         allCountries = countryRepository.allCountries
     }
@@ -23,4 +23,19 @@ class CountryViewModel : ViewModel() {
     fun insertCountry(country : Country) = viewModelScope.launch {
         countryRepository.insert(country)
     }
+
+    fun insertListCountry(countries : List<Country>) = viewModelScope.launch {
+        countryRepository.insertAll(countries)
+    }
+
+    fun getCountries() {
+        countryRepository.fetchCountries()
+    }
+
+}
+
+interface OnItemClickListener{
+
+    fun onCountryClicked(country: Country)
+
 }

@@ -1,4 +1,4 @@
-package com.smaedev.covi19.DB
+package com.smaedev.covi19.db
 
 import androidx.annotation.NonNull
 import androidx.room.Entity
@@ -18,11 +18,6 @@ class Country(
     val total_cases_per_1m_population: String
 
 ) {
-
-    /*val countryDeath: Int? = null
-    val countryIll: Int? = null
-    val countryCorona: Int? = null*/
-
     companion object {
     const val TABLE_NAME = "countries"
     }

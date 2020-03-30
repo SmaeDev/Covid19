@@ -1,4 +1,4 @@
-package com.smaedev.covi19.DB
+package com.smaedev.covi19.db
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
@@ -11,6 +11,9 @@ interface CountryDao {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(country: Country)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertAll(users: List<Country>)
 
     @Query("SELECT * FROM countries WHERE countries.country_name LIKE :country")
     fun getCountries(country: String?): Country?

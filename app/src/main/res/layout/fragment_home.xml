@@ -7,6 +7,7 @@
     android:background="@drawable/grillerepetition"
     tools:context=".ui.home.HomeFragment">
 
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="348dp"
@@ -56,7 +57,7 @@
             android:layout_marginBottom="8dp"
             android:background="@null"
             android:src="@drawable/secure"
-            android:text="Button"
+            android:text="@string/bt"
             app:layout_constraintBottom_toTopOf="@+id/textView18"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.946"
@@ -71,7 +72,7 @@
             android:layout_marginBottom="8dp"
             android:background="@null"
             android:src="@drawable/virusc"
-            android:text="Button"
+            android:text="@string/bt"
             app:layout_constraintBottom_toTopOf="@+id/textView19"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.058"
@@ -310,7 +311,7 @@
         android:paddingTop="5dp"
         android:paddingRight="5dp"
         android:paddingBottom="5dp"
-        android:text="Respectez les mesures prise par votre état, pour votre sécurité !"
+        android:text="@string/conseilFooter"
         android:textColor="@color/blueFacebook"
         android:textSize="12sp"
         android:textStyle="bold"
@@ -332,7 +333,7 @@
         android:layout_marginRight="4dp"
         android:background="@android:drawable/editbox_background_normal"
         android:gravity="center"
-        android:text="Suivez l'évolution du coronavirus en temps réel"
+        android:text="@string/enteteAccueil"
         android:textColor="@color/blueFacebook"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"

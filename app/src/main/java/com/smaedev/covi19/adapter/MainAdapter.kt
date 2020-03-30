@@ -1,11 +1,12 @@
-package com.smaedev.covi19
-
+package com.smaedev.covi19.adapter
+/*
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.smaedev.covi19.ui.country.CountryFeed
+import com.smaedev.covi19.R
+import com.smaedev.covi19.repository.CountryFeed
 import kotlinx.android.synthetic.main.recyclerview_country.view.*
 
 class MainAdapter(val countryFeed: CountryFeed) : RecyclerView.Adapter<CustomViewHolder>() {
@@ -32,4 +33,4 @@ class MainAdapter(val countryFeed: CountryFeed) : RecyclerView.Adapter<CustomVie
 }
 class CustomViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
     val userItemView: TextView = itemView.findViewById(R.id.tvCountry)
-}
+}*/

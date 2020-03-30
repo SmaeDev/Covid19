@@ -16,7 +16,27 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="descvirus">Cliquez sur l\'image pour savoir ce que c\'est que le coronavirus, son origine, ...</string>
+    <string name="descvirus">Cliquez sur l\'image pour savoir ce que c\'est que le coronavirus, son origine, …</string>
     <string name="descConseil">Cliquez sur l\'image pour voir quelques conseils vous permettant d\'éviter le covid-19</string>
     <string name="cliquez">Cliquez sur l\'image</string>
+
+
+
+    <string name="cas"> Cas </string>
+    <string name="rechercher">Rechercher</string>
+    <string name="pays">Pays</string>
+    <string name="totalCas">Nombre total de cas :</string>
+    <string name="nbGueri">Nombre de guéris :</string>
+    <string name="nbNewCas">Nombre de nouveaux cas :</string>
+    <string name="nbNewDeath">Nombre de nouveaux morts :</string>
+    <string name="nbTotalDeath">Nombre total de morts :</string>
+    <string name="nbActiveCas">Nombre de cas actuels :</string>
+    <string name="nbCasPer1m">Nombre de cas par 1m population :</string>
+    <string name="nbCritical">Nombre de cas critiques :</string>
+    <string name="enteteDetailPays">Les statistiques</string>
+    <string name="tV">TextView</string>
+    <string name="bt">Button</string>
+    <string name="enteteAccueil">Suivez l\'évolution du coronavirus en temps réel</string>
+    <string name="conseilFooter">Respectez les mesures prise par votre état, pour votre sécurité !</string>
+    <string name="TitleCountryFrag">Pays contaminés</string>
 </resources>

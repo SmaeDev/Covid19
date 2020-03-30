@@ -2,48 +2,45 @@ package com.smaedev.covi19
 
 import android.app.SearchManager
 import android.content.Context
-import android.content.Intent
-import android.net.Uri
+import android.database.MatrixCursor
 import android.os.Bundle
+import android.provider.BaseColumns
 import android.view.Menu
 import android.widget.CursorAdapter
-import android.widget.SimpleCursorAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.appcompat.widget.Toolbar
+import androidx.cursoradapter.widget.SimpleCursorAdapter
 import androidx.drawerlayout.widget.DrawerLayout
-import androidx.fragment.app.FragmentManager
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.navigation.NavigationView
-import com.google.gson.GsonBuilder
-import com.smaedev.covi19.Adapter.FragDetailCountry
-import com.smaedev.covi19.ui.country.CountryFragment
-import okhttp3.*
-import java.io.IOException
 
 class MainActivity : AppCompatActivity() {
 
-    private var backPressedTimer: Long = 0
-    private var backToast: Toast? = null
+    /*private var backPressedTimer: Long = 0
+    private var backToast: Toast? = null*/
+
+
+    private val strArrData = arrayOf("No Suggestions")
+    private lateinit var cursorAdapter: SimpleCursorAdapter
 
 
     private lateinit var appBarConfiguration: AppBarConfiguration
-    var searchView: SearchView? = null
-    private var myAdapter: SimpleCursorAdapter? = null
 
     companion object {
-        private var instance: MainActivity? = null
-        fun applicationContext() : Context? {
-            return instance?.applicationContext
+        private var INSTANCE: MainActivity? = null
+
+        fun mainActivityContext() : Context? {
+            return INSTANCE?.baseContext
         }
     }
     init {
-        instance = this
+        INSTANCE = this
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -69,22 +66,72 @@ class MainActivity : AppCompatActivity() {
         navView.setupWithNavController(navController)
 
 
-        val from = arrayOf("libelle")
+        val from = arrayOf("country_name")
         val to = intArrayOf(android.R.id.text1)
 
         // setup SimpleCursorAdapter
-        myAdapter = SimpleCursorAdapter(this@MainActivity, android.R.layout.simple_spinner_dropdown_item,null,from,to,
+        cursorAdapter = SimpleCursorAdapter(this@MainActivity, android.R.layout.simple_spinner_dropdown_item,null,from,to,
             CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER
         )
-
-
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.main, menu)
+    /*override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.main, menu)
+
+        val searchManager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
+        val searchItem = menu.findItem(R.id.action_search)
+        val searchView = searchItem?.actionView as SearchView
+
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(componentName))
+        searchView.isIconified = false
+        searchView.suggestionsAdapter = cursorAdapter
+
+        searchView.setOnSuggestionListener(object : SearchView.OnSuggestionListener {
+            override fun onSuggestionClick(position: Int): Boolean {
+                // Add clicked text to search box
+                val ca: androidx.cursoradapter.widget.CursorAdapter? = searchView.suggestionsAdapter
+                val cursor = ca?.cursor
+                cursor?.moveToPosition(position)
+                val selected = cursor?.getString(cursor.getColumnIndex("country_name"))
+
+                searchView.setQuery(selected, false)
+
+                //findNavController().navigate(R.id.nav_country, null)
+
+                return true
+            }
+
+            override fun onSuggestionSelect(position: Int): Boolean {
+                return true
+            }
+        })
+
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+
+            override fun onQueryTextSubmit(query : String?): Boolean{
+                /*searchView.clearFocus()
+                searchView.setQuery("", false)
+                searchItem.collapseActionView()
+                Toast.makeText(this@MainActivity, "Recherche $query", Toast.LENGTH_LONG).show()*/
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+
+                val mc = MatrixCursor(arrayOf(BaseColumns._ID, "country_name"))
+                for (i in strArrData.indices) {
+                    if (strArrData[i].toLowerCase().startsWith(newText!!.toLowerCase())) mc.addRow(
+                        arrayOf<Any>(i, strArrData[i])
+                    )
+                }
+                cursorAdapter.changeCursor(mc)
+                Toast.makeText(this@MainActivity, "Recherche $newText", Toast.LENGTH_LONG).show()
+                return false
+            }
+        })
         return true
-    }
+    }*/
 
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment)
@@ -114,11 +161,4 @@ class MainActivity : AppCompatActivity() {
        }
        backPressedTimer = System.currentTimeMillis()
     }*/
-}
-
-class HomeFeed(val countries_stat : List<Country>)
-class Country(val country_name: String, val cases: String)
-
-interface IOnBackPressed {
-    fun onBackPressed(): Boolean
 }

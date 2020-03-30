@@ -37,5 +37,5 @@ ext {
     materialVersion = "1.0.0"
     google_version = "17.0.0"
     support_version = "1.1.0"
-    retrofit_version = '2.4.0'
+    retrofit_version = '2.5.0'
 }

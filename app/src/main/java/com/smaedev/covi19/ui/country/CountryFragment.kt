@@ -1,36 +1,34 @@
 package com.smaedev.covi19.ui.country
 
+import android.content.Context
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.Toolbar
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.gson.GsonBuilder
-import com.smaedev.covi19.Adapter.CountryListAdapter
-import com.smaedev.covi19.Adapter.CountryListAdapterOffline
-import com.smaedev.covi19.DB.Country
-import com.smaedev.covi19.IOnBackPressed
+import com.smaedev.covi19.db.Country
 import com.smaedev.covi19.R
-import kotlinx.android.synthetic.main.fragment_country.*
-import okhttp3.*
-import java.io.IOException
 
-
-class CountryFragment : Fragment() {
-
-    private lateinit var listener: IOnBackPressed
+class CountryFragment : Fragment(), OnItemClickListener {
 
     private lateinit var countryViewModel: CountryViewModel
     var toolbar: Toolbar? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    companion object {
+        private var instance: CountryFragment? = null
+
+        fun getValue(): OnItemClickListener {
+            return this.instance!!
+        }
+    }
+    init {
+        instance = this
     }
 
     override fun onCreateView(
@@ -38,81 +36,65 @@ class CountryFragment : Fragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        fetchJson()
-        countryViewModel =
-                ViewModelProvider(this).get(CountryViewModel::class.java)
+        countryViewModel =ViewModelProvider(this).get(CountryViewModel::class.java)
+        countryViewModel.getCountries()
+
         val root = inflater.inflate(R.layout.fragment_country, container, false)
-        val recyclerviewCountry = root.findViewById<RecyclerView>(R.id.recyclerviewCountry)
-        recyclerviewCountry.layoutManager = LinearLayoutManager(context)
+        recyclerViewC = root.findViewById(R.id.recyclerviewCountry)
+        recyclerViewC.layoutManager = LinearLayoutManager(context)
 
-        (activity as AppCompatActivity?)!!.supportActionBar!!.title = "Pays contaminés"
-        /*val adapter = CountryListAdapter()
-        recyclerviewCountry.adapter = adapter
-        recyclerviewCountry.layoutManager = LinearLayoutManager(context)
+        (activity as AppCompatActivity?)!!.supportActionBar!!.title = getString(R.string.TitleCountryFrag)
 
-        countryViewModel.allCountries.observe(viewLifecycleOwner, Observer { countries ->
+        /*countryViewModel.allCountries.observe(viewLifecycleOwner, Observer { countries ->
             // Update the cached copy of the words in the adapter.
-            countries.let { adapter.setCountries(it) }
+            countries.let { adapterC.setCountries(it) }
         })*/
+
         return root
     }
 
-    fun fetchJson(){
-        println("Test")
-        val request= Request.Builder()
-            .url("https://coronavirus-monitor.p.rapidapi.com/coronavirus/cases_by_country.php")
-            .get()
-            .addHeader("x-rapidapi-host", "coronavirus-monitor.p.rapidapi.com")
-            .addHeader("x-rapidapi-key", "2547575680msh1aee1093c9acb63p1f21b9jsn5ba8aa6b9d5e")
-            .build()
-        val client = OkHttpClient()
-        client.newCall(request).enqueue(object : Callback {
-            override fun onResponse(call: Call, response: Response) {
-                val body = response.body?.string()
-                println("ok"+body)
+    /*override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
 
-                    val gson = GsonBuilder().create()
-                    val homeFeed = gson.fromJson(body, CountryFeed::class.java)
+        inflater.inflate(R.menu.main, menu)
+        val searchItem = menu.findItem(R.id.action_search)
 
-                    runOnUiThread() {
-                        recyclerviewCountry.adapter = CountryListAdapter(homeFeed)
-                    }
+        if (searchItem != null){
+            val searchView = searchItem.actionView as SearchView
 
-            }
+            searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
 
-            override fun onFailure(call: Call, e: IOException) {
+                override fun onQueryTextSubmit(query : String?): Boolean{
+                    searchView.clearFocus()
+                    searchView.setQuery("", false)
+                    searchItem.collapseActionView()
+                    //Toast.makeText(this@MainActivity, "Recherche $query", Toast.LENGTH_LONG).show()
+                    return true
+                }
 
-                /*val adapterOffline = CountryListAdapterOffline(context)
-                recyclerviewCountry.adapter = adapterOffline
-                //recyclerviewCountry.layoutManager = LinearLayoutManager(context)
-                countryViewModel.allCountries.observe(viewLifecycleOwner, Observer { words ->
-                    // Update the cached copy of the words in the adapter.
-                    words?.let { adapterOffline!!.setCountries(it) }
-                })*/
-            }
-
-        })
-    }
-
-    fun Fragment?.runOnUiThread(action: () -> Unit) {
-        this ?: return
-        activity?.runOnUiThread(action)
-    }
-
-    /*override fun onAttach(context: Context) {
-        super.onAttach(context)
-        if (context is IOnBackPressed) {
-            listener = context
-        } else {
-            throw RuntimeException(context.toString() + " must implement FragmentEvent")
+                override fun onQueryTextChange(newText: String?): Boolean {
+                    return true
+                }
+            })
         }
+
+        return super.onCreateOptionsMenu(menu, inflater)
     }*/
 
-    companion object {
-
-    }
-    init {
-
+    override fun onCountryClicked(country: Country) {
+        val bundle = bundleOf(
+            "COUNTRYNAME_KEY" to country.country_name,
+            "CASES_KEY" to country.cases,
+            "DEATH_KEY" to country.deaths,
+            "TOTAL_REC_KEY" to country.total_recovered,
+            "NEWDEATH_KEY" to country.new_deaths,
+            "NEWCASE_KEY" to country.new_cases,
+            "CRITICAL_KEY" to country.serious_critical,
+            "ACTIVECASE_KEY" to country.active_cases,
+            "TOTALPER1M_KEY" to country.total_cases_per_1m_population
+        )
+       findNavController().navigate(R.id.fragDetailCountry, bundle)
     }
 }
-class CountryFeed(val countries_stat : List<Country>)
+
+
+lateinit var recyclerViewC: RecyclerView

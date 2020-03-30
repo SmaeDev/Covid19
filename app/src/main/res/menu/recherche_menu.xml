@@ -3,10 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/action_search"
+        android:id="@+id/search"
         android:icon="@drawable/ic_search_black_24dp"
         android:orderInCategory="100"
-        android:title="Rechercher"
+        android:title="@string/rechercher"
         app:actionViewClass="androidx.appcompat.widget.SearchView"
         app:showAsAction="always"
 
