@@ -47,6 +47,8 @@ class CountryFragment : Fragment(), OnItemClickListener {
         recyclerViewC = binding.recyclerviewCountry
         recyclerViewC.layoutManager = LinearLayoutManager(context)
 
+
+        (activity as AppCompatActivity?)!!.supportActionBar!!.show()
         (activity as AppCompatActivity?)!!.supportActionBar!!.title = getString(R.string.TitleCountryFrag)
 
         /*countryViewModel.allCountries.observe(viewLifecycleOwner, Observer { countries ->

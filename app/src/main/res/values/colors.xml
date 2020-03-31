@@ -8,4 +8,5 @@
     <color name="blanc">#ffffff</color>
     <color name="noir">#000000</color>
     <color name="rouge">#ed1c24</color>
+    <color name="rougeApp">#CA5F59</color>
 </resources>

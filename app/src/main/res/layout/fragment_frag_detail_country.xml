@@ -1,315 +1,592 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data></data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/blanc"
     android:gravity="center"
     tools:context=".ui.country.FragDetailCountry">
 
-
-    <TextView
-        android:id="@+id/tvCountryname"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout2"
         android:layout_width="0dp"
-        android:layout_height="47dp"
-        android:gravity="center"
-        android:text="@string/pays"
-        android:textColor="@color/blueFacebook"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <View
-        android:id="@+id/divider"
-        android:layout_width="411dp"
-        android:layout_height="6dp"
-        android:layout_marginTop="8dp"
-        android:background="@color/blueFacebook"
+        android:layout_height="100dp"
+        android:background="@drawable/countrydetailheader"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvCountryname" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TableLayout
-        android:id="@+id/linearLayout"
+        <TextView
+            android:id="@+id/tvTitleDetail"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/adamina"
+            android:gravity="center|top"
+            android:text="@string/titleDetail"
+            android:textColor="@color/blanc"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvSoutitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/adamina"
+            android:gravity="bottom|center|top"
+            android:text="Sous-titre"
+            android:textColor="@color/blanc"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvTitleDetail"
+            app:layout_constraintVertical_bias="0.0" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardViewTC"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="58dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="70dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
-        android:gravity="center_horizontal"
-        android:orientation="vertical"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textViewC"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|top|left"
+            android:fontFamily="@font/adamina"
+            android:paddingLeft="15dp"
+            android:paddingTop="12dp"
+            android:text="@string/totalCasT"
+            android:textColor="@color/noir"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/textView7"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/textViewSC"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center|left"
+            android:fontFamily="@font/adamina"
+            android:paddingLeft="15dp"
+            android:paddingBottom="12dp"
+            android:text="@string/totalCasS"
+            android:textColor="@color/noir"
+            android:textSize="8sp"
+            app:layout_constraintBottom_toTopOf="@+id/textView7"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/tvCases"
+            android:layout_width="118dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|right"
+            android:fontFamily="@font/adamina"
+            android:gravity="right"
+            android:paddingTop="5dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="5dp"
+            android:text="TextView"
+            android:textColor="@color/rougeApp"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/textView9"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardViewRec"
+        android:layout_width="0dp"
+        android:layout_height="58dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardViewTC">
+
+        <TextView
+            android:id="@+id/textViewG"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|top|left"
+            android:fontFamily="@font/adamina"
+            android:paddingLeft="15dp"
+            android:paddingTop="12dp"
+            android:text="@string/nbGueri1"
+            android:textColor="@color/noir"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/textView7"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/textViewSG"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center|left"
+            android:fontFamily="@font/adamina"
+            android:paddingLeft="15dp"
+            android:paddingBottom="12dp"
+            android:text="@string/nbGueri2"
+            android:textColor="@color/noir"
+            android:textSize="8sp"
+            app:layout_constraintBottom_toTopOf="@+id/textView7"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/tvRecovered"
+            android:layout_width="118dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|right"
+            android:fontFamily="@font/adamina"
+            android:gravity="right"
+            android:paddingTop="5dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="5dp"
+            android:text="TextView"
+            android:textColor="@color/rougeApp"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/textView9"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardViewNC"
+        android:layout_width="0dp"
+        android:layout_height="58dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardViewRec">
+
+        <TextView
+            android:id="@+id/textViewNC"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|top|left"
+            android:fontFamily="@font/adamina"
+            android:paddingLeft="15dp"
+            android:paddingTop="12dp"
+            android:text="@string/nbNewCas1"
+            android:textColor="@color/noir"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/textView7"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/textViewSNC"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center|left"
+            android:fontFamily="@font/adamina"
+            android:paddingLeft="15dp"
+            android:paddingBottom="12dp"
+            android:text="@string/nbNewCas2"
+            android:textColor="@color/noir"
+            android:textSize="8sp"
+            app:layout_constraintBottom_toTopOf="@+id/textView7"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/tvNewCase"
+            android:layout_width="118dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|right"
+            android:fontFamily="@font/adamina"
+            android:gravity="right"
+            android:paddingTop="5dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="5dp"
+            android:text="TextView"
+            android:textColor="@color/rougeApp"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/textView9"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardViewNewD"
+        android:layout_width="0dp"
+        android:layout_height="58dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardViewNC">
+
+        <TextView
+            android:id="@+id/textViewND"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|top|left"
+            android:fontFamily="@font/adamina"
+            android:paddingLeft="15dp"
+            android:paddingTop="12dp"
+            android:text="@string/nbNewDeath1"
+            android:textColor="@color/noir"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/textView7"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/textViewSND"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center|left"
+            android:fontFamily="@font/adamina"
+            android:paddingLeft="15dp"
+            android:paddingBottom="12dp"
+            android:text="@string/nbNewDeath2"
+            android:textColor="@color/noir"
+            android:textSize="8sp"
+            app:layout_constraintBottom_toTopOf="@+id/textView7"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/tvNewDeath"
+            android:layout_width="118dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|right"
+            android:fontFamily="@font/adamina"
+            android:gravity="right"
+            android:paddingTop="5dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="5dp"
+            android:text="TextView"
+            android:textColor="@color/rougeApp"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/textView9"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardViewTD"
+        android:layout_width="0dp"
+        android:layout_height="58dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardViewNewD">
+
+        <TextView
+            android:id="@+id/textViewTD"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|top|left"
+            android:fontFamily="@font/adamina"
+            android:paddingLeft="15dp"
+            android:paddingTop="12dp"
+            android:text="@string/nbTotalDeath1"
+            android:textColor="@color/noir"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/textView7"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/textViewSTD"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center|left"
+            android:fontFamily="@font/adamina"
+            android:paddingLeft="15dp"
+            android:paddingBottom="12dp"
+            android:text="@string/nbTotalDeath2"
+            android:textColor="@color/noir"
+            android:textSize="8sp"
+            app:layout_constraintBottom_toTopOf="@+id/textView7"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/tvTotalDeath"
+            android:layout_width="118dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|right"
+            android:fontFamily="@font/adamina"
+            android:gravity="right"
+            android:paddingTop="5dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="5dp"
+            android:text="TextView"
+            android:textColor="@color/rougeApp"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/textView9"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardViewCA"
+        android:layout_width="0dp"
+        android:layout_height="58dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardViewTD">
+
+        <TextView
+            android:id="@+id/textViewCA"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|top|left"
+            android:fontFamily="@font/adamina"
+            android:paddingLeft="15dp"
+            android:paddingTop="12dp"
+            android:text="@string/nbActiveCas1"
+            android:textColor="@color/noir"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/textView7"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/textViewSCA"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center|left"
+            android:fontFamily="@font/adamina"
+            android:paddingLeft="15dp"
+            android:paddingBottom="12dp"
+            android:text="@string/nbActiveCas2"
+            android:textColor="@color/noir"
+            android:textSize="8sp"
+            app:layout_constraintBottom_toTopOf="@+id/textView7"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/tvActive"
+            android:layout_width="118dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|right"
+            android:fontFamily="@font/adamina"
+            android:gravity="right"
+            android:paddingTop="5dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="5dp"
+            android:text="TextView"
+            android:textColor="@color/rougeApp"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/textView9"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardViewParM"
+        android:layout_width="0dp"
+        android:layout_height="58dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardViewCA">
+
+        <TextView
+            android:id="@+id/textViewParM"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|top|left"
+            android:fontFamily="@font/adamina"
+            android:paddingLeft="15dp"
+            android:paddingTop="12dp"
+            android:text="@string/nbCasPer1m1"
+            android:textColor="@color/noir"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/textView7"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/textViewParSM"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center|left"
+            android:fontFamily="@font/adamina"
+            android:paddingLeft="15dp"
+            android:paddingBottom="12dp"
+            android:text="@string/nbCasPer1m2"
+            android:textColor="@color/noir"
+            android:textSize="8sp"
+            app:layout_constraintBottom_toTopOf="@+id/textView7"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/tvCasePer1m"
+            android:layout_width="118dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|right"
+            android:fontFamily="@font/adamina"
+            android:gravity="right"
+            android:paddingTop="5dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="5dp"
+            android:text="TextView"
+            android:textColor="@color/rougeApp"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/textView9"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardViewCri"
+        android:layout_width="0dp"
+        android:layout_height="58dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardViewParM">
+
+        <TextView
+            android:id="@+id/textViewCri"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|top|left"
+            android:fontFamily="@font/adamina"
+            android:paddingLeft="15dp"
+            android:paddingTop="12dp"
+            android:text="@string/nbCritical1"
+            android:textColor="@color/noir"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/textView7"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/textViewCriS"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center|left"
+            android:fontFamily="@font/adamina"
+            android:paddingLeft="15dp"
+            android:paddingBottom="12dp"
+            android:text="@string/nbCritical2"
+            android:textColor="@color/noir"
+            android:textSize="8sp"
+            app:layout_constraintBottom_toTopOf="@+id/textView7"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/tvCritical"
+            android:layout_width="118dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|right"
+            android:fontFamily="@font/adamina"
+            android:gravity="right"
+            android:paddingTop="5dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="5dp"
+            android:text="TextView"
+            android:textColor="@color/rougeApp"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/textView9"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/Date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"
+        android:gravity="center"
+        android:text="@string/date"
+        android:textSize="10sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.271"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider">
-
-        <TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/textView7"
-                android:layout_width="262dp"
-                android:layout_height="wrap_content"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
-                android:text="@string/totalCas"
-                android:textColor="@color/blueFacebook"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/textView9"
-                app:layout_constraintStart_toStartOf="parent" />
-
-            <TextView
-                android:id="@+id/tvCases"
-                android:layout_width="104dp"
-                android:layout_height="wrap_content"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
-                android:text="TextView"
-                android:textColor="@color/noir"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/tvTotal"
-                app:layout_constraintEnd_toEndOf="parent" />
-
-        </TableRow>
-
-        <TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/textViewG"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
-                android:text="@string/nbGueri"
-                android:textColor="@color/blueFacebook"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/textView7"
-                app:layout_constraintStart_toStartOf="parent" />
-
-
-            <TextView
-                android:id="@+id/tvRecovered"
-                android:layout_width="118dp"
-                android:layout_height="wrap_content"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
-                android:text="TextView"
-                android:textColor="@color/noir"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/textView9"
-                app:layout_constraintEnd_toEndOf="parent" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/textViewNC"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
-                android:text="@string/nbNewCas"
-                android:textColor="@color/blueFacebook"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/textView7"
-                app:layout_constraintStart_toStartOf="parent" />
-
-
-            <TextView
-                android:id="@+id/tvNewCase"
-                android:layout_width="118dp"
-                android:layout_height="wrap_content"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
-                android:text="TextView"
-                android:textColor="@color/noir"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/textView9"
-                app:layout_constraintEnd_toEndOf="parent" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/textView5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
-                android:text="@string/nbNewDeath"
-                android:textColor="@color/blueFacebook"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/textView7"
-                app:layout_constraintStart_toStartOf="parent" />
-
-
-            <TextView
-                android:id="@+id/tvNewDeath"
-                android:layout_width="118dp"
-                android:layout_height="wrap_content"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
-                android:text="@string/tV"
-                android:textColor="@color/noir"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/textView9"
-                app:layout_constraintEnd_toEndOf="parent" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="235dp"
-                android:layout_height="wrap_content"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
-                android:text="@string/nbTotalDeath"
-                android:textColor="@color/blueFacebook"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/textView5"
-                app:layout_constraintEnd_toStartOf="@+id/tvDeath"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent" />
-
-            <TextView
-                android:id="@+id/tvTotalDeath"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
-                android:text="@string/tV"
-                android:textColor="@color/rouge"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/tvill"
-                app:layout_constraintEnd_toEndOf="parent" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/textViewCasAct"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
-                android:text="@string/nbActiveCas"
-                android:textColor="@color/blueFacebook"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/textView7"
-                app:layout_constraintStart_toStartOf="parent" />
-
-
-            <TextView
-                android:id="@+id/tvActive"
-                android:layout_width="118dp"
-                android:layout_height="wrap_content"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
-                android:text="@string/tV"
-                android:textColor="@color/noir"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/textView9"
-                app:layout_constraintEnd_toEndOf="parent" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/textViewParM"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
-                android:text="@string/nbCasPer1m"
-                android:textColor="@color/blueFacebook"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/textView7"
-                app:layout_constraintStart_toStartOf="parent" />
-
-
-            <TextView
-                android:id="@+id/tvCasePer1m"
-                android:layout_width="118dp"
-                android:layout_height="wrap_content"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
-                android:text="@string/tV"
-                android:textColor="@color/noir"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/textView9"
-                app:layout_constraintEnd_toEndOf="parent" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/textViewCri"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
-                android:text="@string/nbCritical"
-                android:textColor="@color/blueFacebook"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/textView7"
-                app:layout_constraintStart_toStartOf="parent" />
-
-
-            <TextView
-                android:id="@+id/tvCritical"
-                android:layout_width="112dp"
-                android:layout_height="wrap_content"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
-                android:text="@string/tV"
-                android:textColor="@color/noir"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/textView9"
-                app:layout_constraintEnd_toEndOf="parent" />
-        </TableRow>
-
-
-    </TableLayout>
-
+        app:layout_constraintTop_toBottomOf="@+id/cardViewCri" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</layout>

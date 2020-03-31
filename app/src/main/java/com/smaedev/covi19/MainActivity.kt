@@ -52,6 +52,7 @@ class MainActivity : AppCompatActivity() {
         //setContentView(binding.root)
 
         setSupportActionBar(binding.tool.toolbar)
+        supportActionBar!!.show()
 
         /*val fab = binding.fab
         fab.setOnClickListener { view ->

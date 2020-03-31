@@ -8,6 +8,8 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.smaedev.covi19.R
+import com.smaedev.covi19.databinding.FragmentFragDetailCountryBinding
+import com.smaedev.covi19.repository.dateMAJ
 
 
 class FragDetailCountry : Fragment() {
@@ -23,24 +25,30 @@ class FragDetailCountry : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val root = inflater.inflate(R.layout.fragment_frag_detail_country, container, false)
+        val binding : FragmentFragDetailCountryBinding = FragmentFragDetailCountryBinding.bind(root)
 
         // Initialisation des variables ==============================
-        val country : TextView = root.findViewById(R.id.tvCountryname)
-        val death : TextView = root.findViewById(R.id.tvTotalDeath)
-        val cases : TextView = root.findViewById(R.id.tvCases)
-        val totalRecovered : TextView = root.findViewById(R.id.tvRecovered)
-        val newDeaths : TextView = root.findViewById(R.id.tvNewDeath)
-        val newCases : TextView = root.findViewById(R.id.tvNewCase)
-        val seriousCritical : TextView = root.findViewById(R.id.tvCritical)
-        val activeCases : TextView = root.findViewById(R.id.tvActive)
-        val totalCasesPer1mPopulation : TextView = root.findViewById(R.id.tvCasePer1m)
+        val titleDetail = binding.tvTitleDetail
+        val sousTitleDetail = binding.tvSoutitle
+        val date = binding.Date
+        val death = binding.tvTotalDeath
+        val cases = binding.tvCases
+        val totalRecovered = binding.tvRecovered
+        val newDeaths = binding.tvNewDeath
+        val newCases = binding.tvNewCase
+        val seriousCritical = binding.tvCritical
+        val activeCases = binding.tvActive
+        val totalCasesPer1mPopulation = binding.tvCasePer1m
 
         val countrynameKey = requireArguments().getString("COUNTRYNAME_KEY")
 
-        (activity as AppCompatActivity?)!!.supportActionBar!!.title = "Pays : $countrynameKey"
+        //(activity as AppCompatActivity?)!!.supportActionBar!!.title = "Pays : $countrynameKey"
+        (activity as AppCompatActivity?)!!.supportActionBar!!.hide()
 
-        //country?.setText("Les statistiques pour : "+countrynameKey)
-        country.text = getString(R.string.enteteDetailPays)
+        titleDetail.text = "$countrynameKey "+getString(R.string.titleDetail)
+        sousTitleDetail.text = getString(R.string.soutitleDetail1)+" $countrynameKey "+getString(R.string.soutitleDetail2)
+        date.text = getString(R.string.date)+" $dateMAJ"
+
         cases.text = requireArguments().getString("CASES_KEY")
         death.text = requireArguments().getString("DEATH_KEY")
         totalRecovered.text = requireArguments().getString("TOTAL_REC_KEY")

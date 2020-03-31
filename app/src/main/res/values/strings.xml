@@ -24,19 +24,48 @@
 
     <string name="cas"> Cas </string>
     <string name="rechercher">Rechercher</string>
-    <string name="pays">Pays</string>
-    <string name="totalCas">Nombre total de cas :</string>
-    <string name="nbGueri">Nombre de guéris :</string>
-    <string name="nbNewCas">Nombre de nouveaux cas :</string>
-    <string name="nbNewDeath">Nombre de nouveaux morts :</string>
-    <string name="nbTotalDeath">Nombre total de morts :</string>
-    <string name="nbActiveCas">Nombre de cas actuels :</string>
-    <string name="nbCasPer1m">Nombre de cas par 1m population :</string>
-    <string name="nbCritical">Nombre de cas critiques :</string>
+    <string name="titleDetail">Covid-19</string>
+
+    <string name="totalCas"><b>Infectés</b> \nNombre de cas</string>
+    <string name="totalCasT">Infectés</string>
+    <string name="totalCasS">Nombre de cas</string>
+
+    <string name="nbGueri"><b>Guéris</b> \nNombre de guéris</string>
+    <string name="nbGueri1">Guéris</string>
+    <string name="nbGueri2">Nombre de guéris</string>
+
+    <string name="nbNewCas"><b>Nouveaux cas</b> \nNombre de nouveaux cas</string>
+    <string name="nbNewCas1">Nouveaux cas</string>
+    <string name="nbNewCas2">Nombre de nouveaux cas</string>
+
+
+    <string name="nbNewDeath"><b>Nouveaux morts</b> \nNombre de nouveaux morts</string>
+    <string name="nbNewDeath1">Nouveaux morts</string>
+    <string name="nbNewDeath2">Nombre de nouveaux morts</string>
+
+    <string name="nbTotalDeath"><b>Décès</b> \nNombre de cas décédés</string>
+    <string name="nbTotalDeath1">Décès</string>
+    <string name="nbTotalDeath2">Nombre de cas décédés</string>
+
+    <string name="nbActiveCas"><b>Sous traitement</b> \nNombre de cas sous traitement</string>
+    <string name="nbActiveCas1">Sous traitement</string>
+    <string name="nbActiveCas2">Nombre de cas sous traitement</string>
+
+    <string name="nbCasPer1m"><b>Cas géographiquement</b> \nNombre de cas par 1m population</string>
+    <string name="nbCasPer1m1">Cas géographiquement</string>
+    <string name="nbCasPer1m2">Nombre de cas par 1m population</string>
+
+    <string name="nbCritical"><b>Cas critiques</b> \nNombre de cas critiques</string>
+    <string name="nbCritical1">Cas critiques</string>
+    <string name="nbCritical2">Nombre de cas critiques</string>
+
     <string name="enteteDetailPays">Les statistiques</string>
     <string name="tV">TextView</string>
     <string name="bt">Button</string>
     <string name="enteteAccueil">Suivez l\'évolution du coronavirus en temps réel</string>
     <string name="conseilFooter">Respectez les mesures prise par votre état, pour votre sécurité !</string>
     <string name="TitleCountryFrag">Pays contaminés</string>
+    <string name="soutitleDetail1">Les données de</string>
+    <string name="soutitleDetail2">sur le coronavirus</string>
+    <string name="date">Dernière mise à jour :</string>
 </resources>

@@ -15,6 +15,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.*
 
 class CountryRepository(private val countryDao: CountryDao) {
 
@@ -56,6 +57,8 @@ class CountryRepository(private val countryDao: CountryDao) {
             override fun onResponse(call: Call<CountryFeed>, response: Response<CountryFeed>) {
 
                 val allCountries = response.body()
+                dateMAJ = response.body()?.statistic_taken_at.toString()
+                println("Test------:$dateMAJ")
 
                 allCountries.let {
                     println("Test------")
@@ -77,5 +80,6 @@ class CountryRepository(private val countryDao: CountryDao) {
 
 }
 
-class CountryFeed(val countries_stat : List<Country>)
+class CountryFeed(val countries_stat : List<Country>, val statistic_taken_at: String)
 lateinit var adapterC : CountryListAdapter
+lateinit var dateMAJ: String

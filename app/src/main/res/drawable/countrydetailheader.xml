@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <!-- we define background color -->
+    <solid android:color="@color/rougeApp" />
+
+    <!-- we define border color and thick -->
+    <stroke
+        android:width="0dp"
+        android:color="@color/blanc" />
+
+    <!-- add some padding for text inside -->
+    <padding
+        android:bottom="15dp"
+        android:left="0dp"
+        android:right="0dp"
+        android:top="0dp" />
+
+    <!-- we define corner radius, note that radius can be different for each corner -->
+    <corners
+        android:topLeftRadius="@dimen/cardview_default_elevation"
+        android:topRightRadius="@dimen/cardview_default_radius"
+        android:radius="50dp" />
+
+</shape>
