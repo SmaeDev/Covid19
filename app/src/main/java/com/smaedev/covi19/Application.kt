@@ -5,12 +5,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import androidx.sqlite.db.SupportSQLiteDatabase
 import com.smaedev.covi19.db.Country
 import com.smaedev.covi19.db.CountryDao
 import com.smaedev.covi19.repository.CountryFeed
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.http.GET
 
@@ -38,37 +36,31 @@ interface ITanApi {
 abstract class AppDatabase : RoomDatabase() {
     abstract fun countryDao(): CountryDao
 
-    private class CountryDatabaseCallback(
-        private val scope: CoroutineScope
-    ) : RoomDatabase.Callback() {
+    companion object : SingletonHolder<AppDatabase, Context>({
+        Room.databaseBuilder(it.applicationContext, AppDatabase::class.java, "covid19.db").build()
+    })
 
-        override fun onOpen(db: SupportSQLiteDatabase) {
-            super.onOpen(db)
-            INSTANCE_BASE?.let { database ->
-                scope.launch {
-                    //var countryDao = database.countryDao()
-                    /*countryDao.deleteAll()*/
+    open class SingletonHolder<T, A>(creator: (A) -> T) {
+        private var creator: ((A) -> T)? = creator
+        @Volatile private var instance: T? = null
+
+        fun getInstance(arg: A): T {
+            val i = instance
+            if (i != null) {
+                return i
+            }
+
+            return synchronized(this) {
+                val i2 = instance
+                if (i2 != null) {
+                    i2
+                } else {
+                    val created = creator!!(arg)
+                    instance = created
+                    creator = null
+                    created
                 }
             }
         }
     }
-    companion object {
-
-        @Volatile
-        private var INSTANCE_BASE: AppDatabase? = null
-
-        fun getDatabase(context: Context?, scope: CoroutineScope): AppDatabase {
-            return INSTANCE_BASE?: synchronized(this) {
-                val instance = Room.databaseBuilder(context!!.applicationContext,
-                    AppDatabase::class.java,
-                    "covid_database"
-
-                ).addCallback(CountryDatabaseCallback(scope)).build()
-                INSTANCE_BASE = instance
-                instance
-            }
-        }
-
-    }
-
 }

@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.smaedev.covi19.AppDatabase
+import com.smaedev.covi19.Application
 import com.smaedev.covi19.MainActivity
 import com.smaedev.covi19.db.Country
 import com.smaedev.covi19.repository.CountryRepository
@@ -12,10 +13,10 @@ import kotlinx.coroutines.launch
 class CountryViewModel : ViewModel() {
 
     private val countryRepository: CountryRepository
-    val allCountries: LiveData<List<Country>>
+    private val allCountries: LiveData<List<Country>>
 
     init {
-        val countryDao = AppDatabase.getDatabase(MainActivity.mainActivityContext(), viewModelScope).countryDao()
+        val countryDao = AppDatabase.getInstance(MainActivity.mainActivityContext()).countryDao()
         countryRepository = CountryRepository(countryDao)
         allCountries = countryRepository.allCountries
     }

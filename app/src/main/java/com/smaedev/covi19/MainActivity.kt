@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.appcompat.widget.Toolbar
 import androidx.cursoradapter.widget.SimpleCursorAdapter
+import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -19,12 +20,14 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.navigation.NavigationView
+import com.smaedev.covi19.databinding.ActivityMainBinding
+import com.smaedev.covi19.databinding.AppBarMainBinding
+import kotlinx.android.synthetic.main.app_bar_main.view.*
 
 class MainActivity : AppCompatActivity() {
 
     /*private var backPressedTimer: Long = 0
     private var backToast: Toast? = null*/
-
 
     private val strArrData = arrayOf("No Suggestions")
     private lateinit var cursorAdapter: SimpleCursorAdapter
@@ -35,8 +38,8 @@ class MainActivity : AppCompatActivity() {
     companion object {
         private var INSTANCE: MainActivity? = null
 
-        fun mainActivityContext() : Context? {
-            return INSTANCE?.baseContext
+        fun mainActivityContext() : Context {
+            return INSTANCE!!.baseContext
         }
     }
     init {
@@ -45,18 +48,18 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        val binding: ActivityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        //setContentView(binding.root)
 
-        val toolbar: Toolbar = findViewById(R.id.toolbar)
-        setSupportActionBar(toolbar)
+        setSupportActionBar(binding.tool.toolbar)
 
-        /*val fab: FloatingActionButton = findViewById(R.id.fab)
+        /*val fab = binding.fab
         fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show()
         }*/
-        val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
-        val navView: NavigationView = findViewById(R.id.nav_view)
+        val drawerLayout = binding.drawerLayout
+        val navView= binding.navView
         val navController = findNavController(R.id.nav_host_fragment)
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.

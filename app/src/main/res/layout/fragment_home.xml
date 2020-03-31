@@ -1,343 +1,352 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/grillerepetition"
-    tools:context=".ui.home.HomeFragment">
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/grillerepetition"
+            tools:context=".ui.home.HomeFragment">
 
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout"
-        android:layout_width="348dp"
-        android:layout_height="391dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/textView11"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.478"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView15">
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="156dp"
-            android:layout_height="wrap_content"
-            android:text="@string/descConseil"
-            android:textSize="10sp"
-            app:layout_constraintBottom_toBottomOf="@+id/btIConseils"
-            app:layout_constraintEnd_toStartOf="@+id/btIConseils"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/btIConseils" />
-
-        <ImageButton
-            android:id="@+id/btIPays"
-            android:layout_width="77dp"
-            android:layout_height="75dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginLeft="24dp"
-            android:layout_marginBottom="8dp"
-            android:layout_weight="1"
-            android:background="@null"
-            android:cropToPadding="true"
-            android:scaleType="fitXY"
-            android:src="@drawable/pays"
-            app:layout_constraintBottom_toTopOf="@+id/textView17"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <ImageButton
-            android:id="@+id/btIConseils"
-            android:layout_width="76dp"
-            android:layout_height="70dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginBottom="8dp"
-            android:background="@null"
-            android:src="@drawable/secure"
-            android:text="@string/bt"
-            app:layout_constraintBottom_toTopOf="@+id/textView18"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.946"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <ImageButton
-            android:id="@+id/btIVirus"
-            android:layout_width="81dp"
-            android:layout_height="83dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginBottom="8dp"
-            android:background="@null"
-            android:src="@drawable/virusc"
-            android:text="@string/bt"
-            app:layout_constraintBottom_toTopOf="@+id/textView19"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.058"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <TableLayout
-            android:id="@+id/linearLayout"
-            android:layout_width="170dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="42dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <TableRow
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout"
+                android:layout_width="348dp"
+                android:layout_height="391dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toTopOf="@+id/textView11"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.478"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView15">
 
                 <TextView
-                    android:id="@+id/textView4"
+                    android:id="@+id/textView2"
+                    android:layout_width="156dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/descConseil"
+                    android:textSize="10sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/btIConseils"
+                    app:layout_constraintEnd_toStartOf="@+id/btIConseils"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/btIConseils" />
+
+                <ImageButton
+                    android:id="@+id/btIPays"
+                    android:layout_width="77dp"
+                    android:layout_height="75dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:cropToPadding="true"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/pays"
+                    app:layout_constraintBottom_toTopOf="@+id/textView17"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <ImageButton
+                    android:id="@+id/btIConseils"
+                    android:layout_width="76dp"
+                    android:layout_height="70dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@null"
+                    android:src="@drawable/secure"
+                    android:text="@string/bt"
+                    app:layout_constraintBottom_toTopOf="@+id/textView18"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.946"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <ImageButton
+                    android:id="@+id/btIVirus"
+                    android:layout_width="81dp"
+                    android:layout_height="83dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@null"
+                    android:src="@drawable/virusc"
+                    android:text="@string/bt"
+                    app:layout_constraintBottom_toTopOf="@+id/textView19"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.058"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TableLayout
+                    android:id="@+id/linearLayout"
+                    android:layout_width="170dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="42dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TableRow
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/textView4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Nb. total de pays : "
+                            android:textColor="@color/noir"
+                            android:textSize="10sp"
+                            android:textStyle="bold|italic" />
+
+                        <TextView
+                            android:id="@+id/tvNbPays"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="right"
+                            android:text="1000"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textSize="10sp"
+                            android:textStyle="bold" />
+                    </TableRow>
+
+                    <TableRow android:layout_width="wrap_content">
+
+                        <TextView
+                            android:id="@+id/textView8"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Nb. total de cas : "
+                            android:textColor="@color/noir"
+                            android:textSize="10sp"
+                            android:textStyle="bold|italic" />
+
+                        <TextView
+                            android:id="@+id/tvNbCas"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="right"
+                            android:text="-"
+                            android:textColor="@android:color/holo_orange_dark"
+                            android:textSize="10sp"
+                            android:textStyle="bold" />
+                    </TableRow>
+
+                    <TableRow android:layout_width="wrap_content">
+
+                        <TextView
+                            android:id="@+id/textView10"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Nb. total de morts : "
+                            android:textColor="@color/noir"
+                            android:textSize="10sp"
+                            android:textStyle="bold|italic" />
+
+                        <TextView
+                            android:id="@+id/tvNbMorts"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="right"
+                            android:text="-"
+                            android:textColor="@color/rouge"
+                            android:textSize="10sp"
+                            android:textStyle="bold" />
+                    </TableRow>
+
+
+                </TableLayout>
+
+                <TextView
+                    android:id="@+id/textView12"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Nb. total de pays : "
+                    android:layout_marginBottom="1dp"
+                    android:gravity="center"
+                    android:text="Covid-19 ?"
                     android:textColor="@color/noir"
-                    android:textSize="10sp"
-                    android:textStyle="bold|italic" />
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@+id/btIVirus"
+                    app:layout_constraintEnd_toEndOf="@+id/btIVirus"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="@+id/btIVirus" />
 
                 <TextView
-                    android:id="@+id/tvNbPays"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="right"
-                    android:text="1000"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textSize="10sp"
-                    android:textStyle="bold" />
-            </TableRow>
-
-            <TableRow android:layout_width="wrap_content">
-
-                <TextView
-                    android:id="@+id/textView8"
+                    android:id="@+id/textView13"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Nb. total de cas : "
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginBottom="1dp"
+                    android:gravity="center"
+                    android:text="Conseils"
                     android:textColor="@color/noir"
-                    android:textSize="10sp"
-                    android:textStyle="bold|italic" />
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@+id/btIConseils"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.555"
+                    app:layout_constraintStart_toStartOf="@+id/btIConseils" />
 
                 <TextView
-                    android:id="@+id/tvNbCas"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="right"
-                    android:text="-"
-                    android:textColor="@android:color/holo_orange_dark"
-                    android:textSize="10sp"
-                    android:textStyle="bold" />
-            </TableRow>
-
-            <TableRow android:layout_width="wrap_content">
-
-                <TextView
-                    android:id="@+id/textView10"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Nb. total de morts : "
+                    android:id="@+id/textView14"
+                    android:layout_width="58dp"
+                    android:layout_height="31dp"
+                    android:layout_marginBottom="16dp"
+                    android:gravity="center"
+                    android:text="Pays touchés"
                     android:textColor="@color/noir"
-                    android:textSize="10sp"
-                    android:textStyle="bold|italic" />
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/btIPays"
+                    app:layout_constraintEnd_toEndOf="@+id/btIPays"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="@+id/btIPays"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.021" />
 
                 <TextView
-                    android:id="@+id/tvNbMorts"
-                    android:layout_width="match_parent"
+                    android:id="@+id/textView16"
+                    android:layout_width="173dp"
                     android:layout_height="wrap_content"
-                    android:gravity="right"
-                    android:text="-"
-                    android:textColor="@color/rouge"
+                    android:text="@string/descvirus"
                     android:textSize="10sp"
-                    android:textStyle="bold" />
-            </TableRow>
+                    app:layout_constraintBottom_toBottomOf="@+id/btIVirus"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.015"
+                    app:layout_constraintStart_toEndOf="@+id/btIVirus"
+                    app:layout_constraintTop_toTopOf="@+id/btIVirus"
+                    app:layout_constraintVertical_bias="0.442" />
 
+                <TextView
+                    android:id="@+id/textView17"
+                    android:layout_width="wrap_content"
+                    android:layout_height="14dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="@string/cliquez"
+                    android:textSize="9sp"
+                    android:textStyle="italic"
+                    app:layout_constraintBottom_toTopOf="@+id/divider3"
+                    app:layout_constraintEnd_toEndOf="@+id/btIPays"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@+id/btIPays" />
 
-        </TableLayout>
+                <View
+                    android:id="@+id/divider3"
+                    android:layout_width="386dp"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="?android:attr/listDivider"
+                    app:layout_constraintBottom_toTopOf="@+id/textView13"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.25"
+                    app:layout_constraintStart_toStartOf="parent" />
 
-        <TextView
-            android:id="@+id/textView12"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="1dp"
-            android:gravity="center"
-            android:text="Covid-19 ?"
-            android:textColor="@color/noir"
-            android:textSize="12sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/btIVirus"
-            app:layout_constraintEnd_toEndOf="@+id/btIVirus"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="@+id/btIVirus" />
+                <View
+                    android:id="@+id/divider4"
+                    android:layout_width="386dp"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="?android:attr/listDivider"
+                    app:layout_constraintBottom_toTopOf="@+id/textView12"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
 
-        <TextView
-            android:id="@+id/textView13"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginBottom="1dp"
-            android:gravity="center"
-            android:text="Conseils"
-            android:textColor="@color/noir"
-            android:textSize="12sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/btIConseils"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.555"
-            app:layout_constraintStart_toStartOf="@+id/btIConseils" />
+                <TextView
+                    android:id="@+id/textView18"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="@string/cliquez"
+                    android:textSize="9sp"
+                    android:textStyle="italic"
+                    app:layout_constraintBottom_toTopOf="@+id/divider4"
+                    app:layout_constraintEnd_toEndOf="@+id/btIConseils"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toEndOf="@+id/textView2" />
 
-        <TextView
-            android:id="@+id/textView14"
-            android:layout_width="58dp"
-            android:layout_height="31dp"
-            android:layout_marginBottom="16dp"
-            android:gravity="center"
-            android:text="Pays touchés"
-            android:textColor="@color/noir"
-            android:textSize="12sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/btIPays"
-            app:layout_constraintEnd_toEndOf="@+id/btIPays"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="@+id/btIPays"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.021" />
+                <TextView
+                    android:id="@+id/textView19"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="@string/cliquez"
+                    android:textSize="9sp"
+                    android:textStyle="italic"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/btIVirus"
+                    app:layout_constraintHorizontal_bias="0.25"
+                    app:layout_constraintStart_toStartOf="@+id/btIVirus" />
 
-        <TextView
-            android:id="@+id/textView16"
-            android:layout_width="173dp"
-            android:layout_height="wrap_content"
-            android:text="@string/descvirus"
-            android:textSize="10sp"
-            app:layout_constraintBottom_toBottomOf="@+id/btIVirus"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.015"
-            app:layout_constraintStart_toEndOf="@+id/btIVirus"
-            app:layout_constraintTop_toTopOf="@+id/btIVirus"
-            app:layout_constraintVertical_bias="0.442" />
+                <View
+                    android:id="@+id/divider5"
+                    android:layout_width="4dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginEnd="4dp"
+                    android:layout_marginRight="4dp"
+                    android:background="@color/noir"
+                    app:layout_constraintBottom_toTopOf="@+id/divider3"
+                    app:layout_constraintEnd_toStartOf="@+id/linearLayout"
+                    app:layout_constraintHorizontal_bias="0.811"
+                    app:layout_constraintStart_toEndOf="@+id/btIPays"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.474" />
 
-        <TextView
-            android:id="@+id/textView17"
-            android:layout_width="wrap_content"
-            android:layout_height="14dp"
-            android:layout_marginBottom="8dp"
-            android:text="@string/cliquez"
-            android:textSize="9sp"
-            android:textStyle="italic"
-            app:layout_constraintBottom_toTopOf="@+id/divider3"
-            app:layout_constraintEnd_toEndOf="@+id/btIPays"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/btIPays" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <View
-            android:id="@+id/divider3"
-            android:layout_width="386dp"
-            android:layout_height="1dp"
-            android:layout_marginBottom="8dp"
-            android:background="?android:attr/listDivider"
-            app:layout_constraintBottom_toTopOf="@+id/textView13"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.25"
-            app:layout_constraintStart_toStartOf="parent" />
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="0dp"
+                android:layout_height="26dp"
+                android:background="@android:drawable/button_onoff_indicator_off"
+                android:gravity="center"
+                android:padding="5dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"
+                android:text="@string/conseilFooter"
+                android:textColor="@color/blueFacebook"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+                app:layout_constraintVertical_bias="1.0" />
 
-        <View
-            android:id="@+id/divider4"
-            android:layout_width="386dp"
-            android:layout_height="1dp"
-            android:layout_marginBottom="8dp"
-            android:background="?android:attr/listDivider"
-            app:layout_constraintBottom_toTopOf="@+id/textView12"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginLeft="4dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginRight="4dp"
+                android:background="@android:drawable/editbox_background_normal"
+                android:gravity="center"
+                android:text="@string/enteteAccueil"
+                android:textColor="@color/blueFacebook"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/textView18"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:text="@string/cliquez"
-            android:textSize="9sp"
-            android:textStyle="italic"
-            app:layout_constraintBottom_toTopOf="@+id/divider4"
-            app:layout_constraintEnd_toEndOf="@+id/btIConseils"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/textView2" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <TextView
-            android:id="@+id/textView19"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:text="@string/cliquez"
-            android:textSize="9sp"
-            android:textStyle="italic"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/btIVirus"
-            app:layout_constraintHorizontal_bias="0.25"
-            app:layout_constraintStart_toStartOf="@+id/btIVirus" />
-
-        <View
-            android:id="@+id/divider5"
-            android:layout_width="4dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginEnd="4dp"
-            android:layout_marginRight="4dp"
-            android:background="@color/noir"
-            app:layout_constraintBottom_toTopOf="@+id/divider3"
-            app:layout_constraintEnd_toStartOf="@+id/linearLayout"
-            app:layout_constraintHorizontal_bias="0.811"
-            app:layout_constraintStart_toEndOf="@+id/btIPays"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.474" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <TextView
-        android:id="@+id/textView11"
-        android:layout_width="0dp"
-        android:layout_height="26dp"
-        android:background="@android:drawable/button_onoff_indicator_off"
-        android:gravity="center"
-        android:padding="5dp"
-        android:paddingLeft="5dp"
-        android:paddingTop="5dp"
-        android:paddingRight="5dp"
-        android:paddingBottom="5dp"
-        android:text="@string/conseilFooter"
-        android:textColor="@color/blueFacebook"
-        android:textSize="12sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <TextView
-        android:id="@+id/textView15"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginLeft="4dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginRight="4dp"
-        android:background="@android:drawable/editbox_background_normal"
-        android:gravity="center"
-        android:text="@string/enteteAccueil"
-        android:textColor="@color/blueFacebook"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

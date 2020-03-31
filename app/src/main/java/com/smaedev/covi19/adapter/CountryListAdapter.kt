@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.smaedev.covi19.R
+import com.smaedev.covi19.databinding.RecyclerviewCountryBinding
 import com.smaedev.covi19.db.Country
 import com.smaedev.covi19.repository.CountryFeed
 import com.smaedev.covi19.ui.country.OnItemClickListener
@@ -16,12 +17,13 @@ class CountryListAdapter(
     private val listener: OnItemClickListener
 ) : RecyclerView.Adapter<CountryViewHolder>() {
 
-
     private var countries = emptyList<Country>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CountryViewHolder {
         val inflater: LayoutInflater = LayoutInflater.from(parent.context)
         val itemView = inflater.inflate(R.layout.recyclerview_country, parent, false)
+        //val binding: RecyclerviewCountryBinding = RecyclerviewCountryBinding.bind(itemView)
+
         return CountryViewHolder(itemView)
     }
 
@@ -67,6 +69,10 @@ class CountryListAdapter(
 }
 
 class CountryViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
-    val countryName: TextView = itemView.findViewById(R.id.tvCountry)
-    val countryCase: TextView = itemView.findViewById(R.id.tvCas)
+
+
+    private val binding : RecyclerviewCountryBinding = RecyclerviewCountryBinding.bind(view)
+
+    val countryName= binding.tvCountry
+    val countryCase= binding.tvCas
 }

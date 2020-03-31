@@ -1,11 +1,9 @@
 package com.smaedev.covi19.ui.country
 
-import android.content.Context
 import android.os.Bundle
 import android.view.*
 import android.widget.Toolbar
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.SearchView
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -14,10 +12,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.smaedev.covi19.db.Country
 import com.smaedev.covi19.R
+import com.smaedev.covi19.databinding.FragmentCountryBinding
 
 class CountryFragment : Fragment(), OnItemClickListener {
 
     private lateinit var countryViewModel: CountryViewModel
+
     var toolbar: Toolbar? = null
 
     companion object {
@@ -36,11 +36,15 @@ class CountryFragment : Fragment(), OnItemClickListener {
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
+
         countryViewModel =ViewModelProvider(this).get(CountryViewModel::class.java)
         countryViewModel.getCountries()
 
         val root = inflater.inflate(R.layout.fragment_country, container, false)
-        recyclerViewC = root.findViewById(R.id.recyclerviewCountry)
+        val binding : FragmentCountryBinding = FragmentCountryBinding.bind(root)
+
+
+        recyclerViewC = binding.recyclerviewCountry
         recyclerViewC.layoutManager = LinearLayoutManager(context)
 
         (activity as AppCompatActivity?)!!.supportActionBar!!.title = getString(R.string.TitleCountryFrag)
