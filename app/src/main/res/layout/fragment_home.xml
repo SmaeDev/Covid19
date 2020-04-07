@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
@@ -14,31 +15,33 @@
             android:background="@drawable/grillerepetition"
             tools:context=".ui.home.HomeFragment">
 
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginLeft="4dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginRight="4dp"
+                android:background="@android:drawable/editbox_background_normal"
+                android:gravity="center"
+                android:text="@string/enteteAccueil"
+                android:textColor="@color/blueFacebook"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/constraintLayout"
-                android:layout_width="348dp"
-                android:layout_height="391dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:orientation="vertical"
-                app:layout_constraintBottom_toTopOf="@+id/textView11"
+                android:id="@+id/constraintLayoutCountry"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.478"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView15">
-
-                <TextView
-                    android:id="@+id/textView2"
-                    android:layout_width="156dp"
-                    android:layout_height="wrap_content"
-                    android:text="@string/descConseil"
-                    android:textSize="10sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/btIConseils"
-                    app:layout_constraintEnd_toStartOf="@+id/btIConseils"
-                    app:layout_constraintHorizontal_bias="1.0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/btIConseils" />
 
                 <ImageButton
                     android:id="@+id/btIPays"
@@ -55,35 +58,50 @@
                     app:layout_constraintBottom_toTopOf="@+id/textView17"
                     app:layout_constraintStart_toStartOf="parent" />
 
-                <ImageButton
-                    android:id="@+id/btIConseils"
-                    android:layout_width="76dp"
-                    android:layout_height="70dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginRight="8dp"
+                <TextView
+                    android:id="@+id/textView14"
+                    android:layout_width="58dp"
+                    android:layout_height="31dp"
+                    android:layout_marginBottom="64dp"
+                    android:gravity="center"
+                    android:text="Pays touchés"
+                    android:textColor="@color/noir"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/btIPays"
+                    app:layout_constraintEnd_toEndOf="@+id/btIPays"
+                    app:layout_constraintHorizontal_bias="0.894"
+                    app:layout_constraintStart_toStartOf="@+id/btIPays"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="1.0" />
+
+                <TextView
+                    android:id="@+id/textView17"
+                    android:layout_width="wrap_content"
+                    android:layout_height="14dp"
                     android:layout_marginBottom="8dp"
-                    android:background="@null"
-                    android:src="@drawable/secure"
-                    android:text="@string/bt"
-                    app:layout_constraintBottom_toTopOf="@+id/textView18"
+                    android:text="@string/cliquez"
+                    android:textSize="9sp"
+                    android:textStyle="italic"
+                    app:layout_constraintBottom_toTopOf="@+id/divider3"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.946"
                     app:layout_constraintStart_toStartOf="parent" />
 
-                <ImageButton
-                    android:id="@+id/btIVirus"
-                    android:layout_width="81dp"
-                    android:layout_height="83dp"
+                <View
+                    android:id="@+id/divider5"
+                    android:layout_width="4dp"
+                    android:layout_height="50dp"
                     android:layout_marginStart="16dp"
                     android:layout_marginLeft="16dp"
-                    android:layout_marginBottom="8dp"
-                    android:background="@null"
-                    android:src="@drawable/virusc"
-                    android:text="@string/bt"
-                    app:layout_constraintBottom_toTopOf="@+id/textView19"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.058"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    android:layout_marginEnd="4dp"
+                    android:layout_marginRight="4dp"
+                    android:background="@color/noir"
+                    app:layout_constraintBottom_toTopOf="@+id/divider3"
+                    app:layout_constraintEnd_toStartOf="@+id/linearLayout"
+                    app:layout_constraintHorizontal_bias="0.811"
+                    app:layout_constraintStart_toEndOf="@+id/btIPays"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.474" />
 
                 <TableLayout
                     android:id="@+id/linearLayout"
@@ -163,24 +181,43 @@
                             android:textSize="10sp"
                             android:textStyle="bold" />
                     </TableRow>
-
-
                 </TableLayout>
 
+                <View
+                    android:id="@+id/divider3"
+                    android:layout_width="386dp"
+                    android:layout_height="1dp"
+                    android:background="?android:attr/listDivider"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.25"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayoutAdvice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintBottom_toTopOf="@+id/constraintLayoutVirus"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/constraintLayoutCountry">
+
                 <TextView
-                    android:id="@+id/textView12"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/textView2"
+                    android:layout_width="156dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="1dp"
-                    android:gravity="center"
-                    android:text="Covid-19 ?"
-                    android:textColor="@color/noir"
-                    android:textSize="12sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toTopOf="@+id/btIVirus"
-                    app:layout_constraintEnd_toEndOf="@+id/btIVirus"
+                    android:text="@string/descConseil"
+                    android:textSize="10sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/btIConseils"
+                    app:layout_constraintEnd_toStartOf="@+id/btIConseils"
                     app:layout_constraintHorizontal_bias="1.0"
-                    app:layout_constraintStart_toStartOf="@+id/btIVirus" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/btIConseils" />
 
                 <TextView
                     android:id="@+id/textView13"
@@ -200,21 +237,83 @@
                     app:layout_constraintStart_toStartOf="@+id/btIConseils" />
 
                 <TextView
-                    android:id="@+id/textView14"
-                    android:layout_width="58dp"
-                    android:layout_height="31dp"
-                    android:layout_marginBottom="16dp"
+                    android:id="@+id/textView18"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="@string/cliquez"
+                    android:textSize="9sp"
+                    android:textStyle="italic"
+                    app:layout_constraintBottom_toTopOf="@+id/divider4"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <ImageButton
+                    android:id="@+id/btIConseils"
+                    android:layout_width="76dp"
+                    android:layout_height="70dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@null"
+                    android:src="@drawable/secure"
+                    android:text="@string/bt"
+                    app:layout_constraintBottom_toTopOf="@+id/textView18"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.946"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <View
+                    android:id="@+id/divider4"
+                    android:layout_width="386dp"
+                    android:layout_height="1dp"
+                    android:background="?android:attr/listDivider"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayoutVirus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/constraintLayoutAdvice">
+
+                <ImageButton
+                    android:id="@+id/btIVirus"
+                    android:layout_width="81dp"
+                    android:layout_height="83dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@null"
+                    android:src="@drawable/virusc"
+                    android:text="@string/bt"
+                    app:layout_constraintBottom_toTopOf="@+id/textView19"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.058"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="1dp"
                     android:gravity="center"
-                    android:text="Pays touchés"
+                    android:text="Covid-19 ?"
                     android:textColor="@color/noir"
                     android:textSize="12sp"
                     android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="@+id/btIPays"
-                    app:layout_constraintEnd_toEndOf="@+id/btIPays"
+                    app:layout_constraintBottom_toTopOf="@+id/btIVirus"
+                    app:layout_constraintEnd_toEndOf="@+id/btIVirus"
                     app:layout_constraintHorizontal_bias="1.0"
-                    app:layout_constraintStart_toStartOf="@+id/btIPays"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.021" />
+                    app:layout_constraintStart_toStartOf="@+id/btIVirus" />
 
                 <TextView
                     android:id="@+id/textView16"
@@ -230,53 +329,6 @@
                     app:layout_constraintVertical_bias="0.442" />
 
                 <TextView
-                    android:id="@+id/textView17"
-                    android:layout_width="wrap_content"
-                    android:layout_height="14dp"
-                    android:layout_marginBottom="8dp"
-                    android:text="@string/cliquez"
-                    android:textSize="9sp"
-                    android:textStyle="italic"
-                    app:layout_constraintBottom_toTopOf="@+id/divider3"
-                    app:layout_constraintEnd_toEndOf="@+id/btIPays"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="@+id/btIPays" />
-
-                <View
-                    android:id="@+id/divider3"
-                    android:layout_width="386dp"
-                    android:layout_height="1dp"
-                    android:layout_marginBottom="8dp"
-                    android:background="?android:attr/listDivider"
-                    app:layout_constraintBottom_toTopOf="@+id/textView13"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.25"
-                    app:layout_constraintStart_toStartOf="parent" />
-
-                <View
-                    android:id="@+id/divider4"
-                    android:layout_width="386dp"
-                    android:layout_height="1dp"
-                    android:layout_marginBottom="8dp"
-                    android:background="?android:attr/listDivider"
-                    app:layout_constraintBottom_toTopOf="@+id/textView12"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
-
-                <TextView
-                    android:id="@+id/textView18"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:text="@string/cliquez"
-                    android:textSize="9sp"
-                    android:textStyle="italic"
-                    app:layout_constraintBottom_toTopOf="@+id/divider4"
-                    app:layout_constraintEnd_toEndOf="@+id/btIConseils"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toEndOf="@+id/textView2" />
-
-                <TextView
                     android:id="@+id/textView19"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -285,25 +337,8 @@
                     android:textSize="9sp"
                     android:textStyle="italic"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="@+id/btIVirus"
-                    app:layout_constraintHorizontal_bias="0.25"
-                    app:layout_constraintStart_toStartOf="@+id/btIVirus" />
-
-                <View
-                    android:id="@+id/divider5"
-                    android:layout_width="4dp"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginEnd="4dp"
-                    android:layout_marginRight="4dp"
-                    android:background="@color/noir"
-                    app:layout_constraintBottom_toTopOf="@+id/divider3"
-                    app:layout_constraintEnd_toStartOf="@+id/linearLayout"
-                    app:layout_constraintHorizontal_bias="0.811"
-                    app:layout_constraintStart_toEndOf="@+id/btIPays"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.474" />
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -326,26 +361,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+                app:layout_constraintTop_toBottomOf="@+id/constraintLayoutVirus"
                 app:layout_constraintVertical_bias="1.0" />
-
-            <TextView
-                android:id="@+id/textView15"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:layout_marginLeft="4dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="4dp"
-                android:layout_marginRight="4dp"
-                android:background="@android:drawable/editbox_background_normal"
-                android:gravity="center"
-                android:text="@string/enteteAccueil"
-                android:textColor="@color/blueFacebook"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.smaedev.covi19.adapter.CountryListAdapter
 import com.smaedev.covi19.R
 import com.smaedev.covi19.databinding.FragmentHomeBinding
 
@@ -28,16 +27,21 @@ class HomeFragment : Fragment() {
         binding = FragmentHomeBinding.bind(root)
 
         val tvTotalPays = binding.tvNbPays
-        val nbPays : String = CountryListAdapter.totalpays.toString()
-        tvTotalPays.text = nbPays
+        //val nbPays : String = CountryListAdapter.totalpays.toString()
+        //tvTotalPays.text = nbPays
 
         /*val tvDeaths = binding.tvNbMorts)
         var nbDeath : String = CountryListAdapter.totalMort.toString()
         tvDeaths.setText(nbDeath)*/
 
-        binding.btIPays.setOnClickListener {
-            findNavController().navigate(R.id.nav_country, null)
-        }
+        binding.btIPays.setOnClickListener {findNavController().navigate(R.id.nav_country, null)}
+        binding.btIConseils.setOnClickListener {findNavController().navigate(R.id.nav_advice, null)}
+        binding.btIVirus.setOnClickListener {findNavController().navigate(R.id.nav_about, null)}
+
+        binding.constraintLayoutCountry.setOnClickListener {findNavController().navigate(R.id.nav_country, null)}
+        binding.constraintLayoutAdvice.setOnClickListener {findNavController().navigate(R.id.nav_advice, null)}
+        binding.constraintLayoutVirus.setOnClickListener {findNavController().navigate(R.id.nav_about, null)}
+
         return root
     }
 }

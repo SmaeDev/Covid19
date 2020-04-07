@@ -1,18 +1,35 @@
 package com.smaedev.covi19
 
+import android.app.Application
 import android.content.Context
-import androidx.appcompat.app.AppCompatActivity
+import android.util.Log
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.smaedev.covi19.db.Country
 import com.smaedev.covi19.db.CountryDao
 import com.smaedev.covi19.repository.CountryFeed
-import kotlinx.coroutines.CoroutineScope
+import com.smaedev.covi19.repository.dateMAJ
 import retrofit2.Call
-import retrofit2.http.GET
+import retrofit2.Callback
+import retrofit2.Response
 
-class Application: AppCompatActivity() {
+class ApplicationApp: Application() {
+
+    private var mSearchText: String? = null
+
+    fun getSearchText(): String? {
+        return mSearchText
+    }
+
+    fun setSearchText(searchText: String?) {
+        this.mSearchText = searchText
+    }
+
+    override fun onCreate() {
+        super.onCreate()
+
+    }
 
     companion object {
         private var INSTANCE: Application? = null
@@ -25,18 +42,16 @@ class Application: AppCompatActivity() {
     }
 }
 
-//API de recuperation des donn'es
-interface ITanApi {
-    @GET("cases_by_country.php")
-    fun getCountries(): Call<CountryFeed>
-}
-
 //Base de donn'es room
 @Database(entities = [Country::class], version = 1, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun countryDao(): CountryDao
 
-    companion object : SingletonHolder<AppDatabase, Context>({
+    companion object{
+        var base = Room.databaseBuilder(ApplicationApp.applicationContext()!!, AppDatabase::class.java, "covi19.db").build()
+    }
+
+   /* companion object : SingletonHolder<AppDatabase, Context>({
         Room.databaseBuilder(it.applicationContext, AppDatabase::class.java, "covid19.db").build()
     })
 
@@ -62,5 +77,7 @@ abstract class AppDatabase : RoomDatabase() {
                 }
             }
         }
-    }
+    }*/
 }
+
+

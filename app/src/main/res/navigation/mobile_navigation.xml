@@ -38,4 +38,20 @@
         android:name="com.smaedev.covi19.ui.country.FragDetailCountry"
         android:label="fragment_frag_detail_country"
         tools:layout="@layout/fragment_frag_detail_country" />
+
+    <activity
+        android:id="@+id/nav_searchActivity"
+        android:name="com.smaedev.covi19.SearchActivity"
+        android:label="SearchActivity"
+        tools:layout="@layout/activity_search" />
+
+    <fragment
+        android:id="@+id/nav_country_search"
+        android:name="com.smaedev.covi19.ui.country.CountrySearchFragment"
+        android:label="@string/menu_country"
+        tools:layout="@layout/fragment_country_search" >
+        <action
+            android:id="@+id/action_nav_country_to_fragDetailCountry3"
+            app:destination="@id/fragDetailCountry" />
+    </fragment>
 </navigation>

@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingDefaultResource">
 
     <data>
         <variable
-            name="country"
+            name="countrysearch"
             type="com.smaedev.covi19.db.Country" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/oneCountry"
+        android:id="@+id/oneCountrySearch"
         android:layout_width="match_parent"
         android:layout_height="54dp"
         android:background="@color/blanc"
@@ -25,7 +27,7 @@
             android:layout_marginLeft="8dp"
             android:background="@null"
             android:gravity="center_vertical"
-            android:text="@{country.country_name}"
+            android:text="@{countrysearch.country_name}"
             android:textColor="@color/noir"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -51,7 +53,7 @@
             android:gravity="end|center_vertical"
             android:textColor="@color/blueFacebook"
             android:textStyle="bold"
-            android:text="@{country.cases+@string/cas}"
+            android:text="@{countrysearch.cases+@string/cas}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/tvCountry"

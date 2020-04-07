@@ -7,6 +7,8 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Paramètres</string>
 
+    <string name="search_hint">Rechercher ... </string>
+
     <string name="menu_home">Accueil</string>
     <string name="menu_country">Pays</string>
     <string name="menu_about">Covid-19 ?</string>
@@ -18,12 +20,12 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="descvirus">Cliquez sur l\'image pour savoir ce que c\'est que le coronavirus, son origine, …</string>
     <string name="descConseil">Cliquez sur l\'image pour voir quelques conseils vous permettant d\'éviter le covid-19</string>
-    <string name="cliquez">Cliquez sur l\'image</string>
+    <string name="cliquez">Cliquez pour voir le détail</string>
 
 
-
-    <string name="cas"> Cas </string>
-    <string name="rechercher">Rechercher</string>
+    <!-- Ajout de blanc \u0020 en unnicode ou &#160;-->
+    <string name="cas">\u0020 Cas </string>
+    <string name="rechercher">Rechercher...</string>
     <string name="titleDetail">Covid-19</string>
 
     <string name="totalCas"><b>Infectés</b> \nNombre de cas</string>
