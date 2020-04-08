@@ -11,12 +11,9 @@ import kotlinx.android.synthetic.main.recyclerview_country.view.*
 
 class MainAdapter(val countryFeed: CountryFeed) : RecyclerView.Adapter<CustomViewHolder>() {
 
-    val videosTitle = listOf("ok","rgr","rtgr","ftgr")
-
     override fun getItemCount():Int{
         return countryFeed.countries_stat.count()
     }
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -32,5 +29,5 @@ class MainAdapter(val countryFeed: CountryFeed) : RecyclerView.Adapter<CustomVie
 
 }
 class CustomViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
-    val userItemView: TextView = itemView.findViewById(R.id.tvCountry)
+    val countryItemView: TextView = itemView.findViewById(R.id.tvCountry)
 }*/

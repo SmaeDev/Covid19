@@ -1,6 +1,5 @@
-package com.smaedev.covi19
+package com.smaedev.covi19.db
 
-import com.smaedev.covi19.db.Country
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import retrofit2.Retrofit
@@ -24,5 +23,3 @@ private val retrofit = Retrofit.Builder()
     .build()
 private val service = retrofit.create(ApiApp::class.java)
 val countries = service.getCountries()
-
-//val country = service.sendCountry(Country.TABLE_NAME.c)

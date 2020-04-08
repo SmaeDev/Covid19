@@ -4,21 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.smaedev.covi19.R
 import com.smaedev.covi19.databinding.FragmentFragDetailCountryBinding
 import com.smaedev.covi19.repository.dateMAJ
 
-
 class FragDetailCountry : Fragment() {
-
-    /*override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-        }
-    }*/
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,8 +21,6 @@ class FragDetailCountry : Fragment() {
 
         //(activity as AppCompatActivity?)!!.supportActionBar!!.title = "Pays : $countrynameKey"
         (activity as AppCompatActivity?)!!.supportActionBar!!.hide()
-
-        //binding.countryDetail = requireArguments().getString("")
 
         val countrynameKey = requireArguments().getString("COUNTRYNAME_KEY")
 

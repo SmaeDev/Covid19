@@ -15,26 +15,26 @@ import androidx.appcompat.widget.SearchView
 import androidx.core.os.bundleOf
 import androidx.cursoradapter.widget.SimpleCursorAdapter
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.smaedev.covi19.adapter.CountryListAdapter
 import com.smaedev.covi19.databinding.ActivityMainBinding
-import com.smaedev.covi19.db.Country
 import com.smaedev.covi19.repository.CountryFeed
-import com.smaedev.covi19.repository.dateMAJ
+import com.smaedev.covi19.repository.dataList
+import com.smaedev.covi19.ui.country.CountryViewModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
 
-    /*private var backPressedTimer: Long = 0
-    private var backToast: Toast? = null*/
-
-    //var dataList = ArrayList<String>()
     private var strArrData = arrayOf("No Suggestions")
+
+    private lateinit var countryViewModel: CountryViewModel
 
     private lateinit var cursorAdapter: SimpleCursorAdapter
     private lateinit var searchView: SearchView
@@ -47,21 +47,10 @@ class MainActivity : AppCompatActivity() {
         private var INSTANCE: MainActivity? = null
 
         var selected : String? = null
-
-        var totalpays: Int? = null
-        var totalCas: Int? = null
-        var totalMort: Int? = null
-        var total: Int = 0
-
-        fun mainActivityContext(): Context {
-            return INSTANCE!!.baseContext
-        }
     }
 
     init {
         INSTANCE = this
-        //totalpays = countryFeed.countries_stat.count()
-        totalMort = total
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -71,18 +60,12 @@ class MainActivity : AppCompatActivity() {
 
         setSupportActionBar(binding.tool.toolbar)
         supportActionBar!!.show()
-        //listCountries()
 
-
-        searchCountries()
-
-        /*for ( i in 1..totalpays!!){
+        /*for ( i in 1..totalCountry!!){
            val totalDeath: String = countryFeed.countries_stat[i].deaths
            total += totalDeath.toInt()
        }*/
 
-        /*val searchlistPays: RecyclerView = findViewById(R.id.searchrecyclerviewCountry)
-        searchlistPays.layoutManager = LinearLayoutManager(this)*/
         /*val fab = binding.fab
         fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
@@ -109,16 +92,11 @@ class MainActivity : AppCompatActivity() {
             this@MainActivity, android.R.layout.simple_spinner_dropdown_item, null, from, to,
             CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER
         )
-    }
 
-    /*override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if(item.itemId == R.id.action_search){
-            //findNavController(R.id.nav_host_fragment).navigate(R.id.nav_country)
-            //findNavController(R.id.nav_host_fragment).navigate(R.id.nav_searchActivity)
-            //startActivity(Intent(applicationContext, SearchActivity::class.java))
-        }
-        return super.onOptionsItemSelected(item)
-    }*/
+        countryViewModel = ViewModelProvider(this).get(CountryViewModel::class.java)
+        countryViewModel.getCountries()
+
+    }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         val inflater = menuInflater
@@ -199,44 +177,11 @@ class MainActivity : AppCompatActivity() {
          super.onNewIntent(intent)
 
         if (Intent.ACTION_SEARCH == intent.action) {
-            val query = intent.getStringExtra(SearchManager.QUERY)
-            if (searchView != null) {
-                searchView.clearFocus()
-                Toast.makeText(this, "bien" + SearchManager.QUERY, Toast.LENGTH_SHORT).show()
-            }
+            //val query = intent.getStringExtra(SearchManager.QUERY)
+            searchView.clearFocus()
             // User entered text and pressed search button. Perform task ex: fetching data from database and display
         }
      }
-
-    fun searchCountries(){
-
-        countries.clone().enqueue(object: Callback<CountryFeed> {
-            override fun onResponse(call: Call<CountryFeed>, response: Response<CountryFeed>) {
-
-                val allCountries = response.body()
-                dateMAJ = response.body()?.statistic_taken_at.toString()
-                //println("app------:$dateMAJ")
-                allCountries.let {
-
-                    listPaysSearch = ArrayList()
-                    listPaysSearch = it!!.countries_stat
-                    for(country in it.countries_stat) {
-
-                        /*if (country.country_name == MainActivity.selected){
-                            selectedPaysList = listOf(Country(country.country_name))
-                        }*/
-
-                        dataList.add(country.country_name)
-                        //println("ok liste search ${country.country_name}")
-                        //Log.d("Contaminé","Pays ${country.country_name}")
-                    }
-                }
-            }
-            override fun onFailure(call: Call<CountryFeed>, t: Throwable) {
-                Log.e("Pays search", "Error : $t")
-            }
-        })
-    }
 
     /*override fun onBackPressed() {
        if (backPressedTimer + 2000>System.currentTimeMillis()){
@@ -251,9 +196,3 @@ class MainActivity : AppCompatActivity() {
        backPressedTimer = System.currentTimeMillis()
     }*/
 }
-var  listPaysSearch: List<Country> = ArrayList()
-var  selectedPaysList: List<Country> = ArrayList()
-
-var  selectedPays: Country? = null
-
-var dataList = ArrayList<String>()

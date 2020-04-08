@@ -39,12 +39,6 @@
         android:label="fragment_frag_detail_country"
         tools:layout="@layout/fragment_frag_detail_country" />
 
-    <activity
-        android:id="@+id/nav_searchActivity"
-        android:name="com.smaedev.covi19.SearchActivity"
-        android:label="SearchActivity"
-        tools:layout="@layout/activity_search" />
-
     <fragment
         android:id="@+id/nav_country_search"
         android:name="com.smaedev.covi19.ui.country.CountrySearchFragment"

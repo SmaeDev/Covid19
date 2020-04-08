@@ -13,7 +13,7 @@ interface CountryDao {
     suspend fun insert(country: Country)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAll(users: List<Country>)
+    fun insertAll(countries: List<Country>)
 
     @Query("SELECT * from countries ORDER BY country_name ASC")
     fun getAlphabetizedCountries(): LiveData<List<Country>>
@@ -24,10 +24,4 @@ interface CountryDao {
     @Query("SELECT * FROM countries  WHERE country_name LIKE :query")
     fun getCountryByName(query: String?): LiveData<List<Country>>
 
-
-    /* @Query("SELECT * FROM countries WHERE country_name LIKE :country")
-     fun getACountry(country: String?): Country?
-
-     @Query("SELECT * FROM countries WHERE country_name LIKE :country")
-     fun getOKCountry(country: String?): LiveData<Country> */
 }

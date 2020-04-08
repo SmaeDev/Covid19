@@ -9,6 +9,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.smaedev.covi19.R
 import com.smaedev.covi19.databinding.FragmentHomeBinding
+import com.smaedev.covi19.repository.totalCases
+import com.smaedev.covi19.repository.totalCountries
+import com.smaedev.covi19.repository.totalDeath
 
 
 class HomeFragment : Fragment() {
@@ -26,7 +29,9 @@ class HomeFragment : Fragment() {
         val root = inflater.inflate(R.layout.fragment_home, container, false)
         binding = FragmentHomeBinding.bind(root)
 
-        val tvTotalPays = binding.tvNbPays
+        binding.tvNbPays.text = totalCountries.toString()
+        binding.tvNbCas.text = totalCases.toString()
+        binding.tvNbMorts.text = totalDeath.toString()
         //val nbPays : String = CountryListAdapter.totalpays.toString()
         //tvTotalPays.text = nbPays
 
@@ -34,8 +39,8 @@ class HomeFragment : Fragment() {
         var nbDeath : String = CountryListAdapter.totalMort.toString()
         tvDeaths.setText(nbDeath)*/
 
-        binding.btIPays.setOnClickListener {findNavController().navigate(R.id.nav_country, null)}
-        binding.btIConseils.setOnClickListener {findNavController().navigate(R.id.nav_advice, null)}
+        binding.btICountry.setOnClickListener {findNavController().navigate(R.id.nav_country, null)}
+        binding.btIAdvice.setOnClickListener {findNavController().navigate(R.id.nav_advice, null)}
         binding.btIVirus.setOnClickListener {findNavController().navigate(R.id.nav_about, null)}
 
         binding.constraintLayoutCountry.setOnClickListener {findNavController().navigate(R.id.nav_country, null)}

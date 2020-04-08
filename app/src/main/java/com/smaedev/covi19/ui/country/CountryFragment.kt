@@ -1,14 +1,10 @@
 package com.smaedev.covi19.ui.country
 
 import android.os.Bundle
-import android.util.Log
 import android.view.*
-import android.widget.Toast
-import android.widget.Toolbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -19,20 +15,13 @@ import com.smaedev.covi19.db.Country
 import com.smaedev.covi19.R
 import com.smaedev.covi19.adapter.CountryListAdapter
 import com.smaedev.covi19.databinding.FragmentCountryBinding
-import com.smaedev.covi19.listPaysSearch
-import java.util.*
+import com.smaedev.covi19.repository.totalCountries
 
 class CountryFragment : Fragment(), OnItemClickListener {
 
     private lateinit var countryViewModel: CountryViewModel
-    private lateinit var countryList: Country
-
-    val displayList = ArrayList<Country>()
-    val arrayList = ArrayList<Country>()
     lateinit var adapterC : CountryListAdapter
     lateinit var recyclerViewC: RecyclerView
-
-    var toolbar: Toolbar? = null
 
     companion object {
         private var instance: CountryFragment? = null
@@ -54,41 +43,26 @@ class CountryFragment : Fragment(), OnItemClickListener {
         val binding : FragmentCountryBinding = FragmentCountryBinding.bind(root)
 
         countryViewModel =ViewModelProvider(this).get(CountryViewModel::class.java)
-        //countryViewModel.getCountries
 
         recyclerViewC = binding.recyclerviewCountry
         recyclerViewC.layoutManager = LinearLayoutManager(context)
-
-        adapterC = CountryListAdapter(listPaysSearch, getValue())
-        recyclerViewC.adapter = adapterC
 
         (activity as AppCompatActivity?)!!.supportActionBar!!.show()
         (activity as AppCompatActivity?)!!.supportActionBar!!.title = getString(R.string.TitleCountryFrag)
 
         countryViewModel.allCountries.observe(viewLifecycleOwner, Observer { countries ->
             countries?.let {
+                adapterC = CountryListAdapter(it, getValue())
+                recyclerViewC.adapter = adapterC
                 adapterC.setCountries(it)
+
+                totalCountries = adapterC.itemCount
+               // Log.d("Contaminé ///////","Pays ${it}")
             }
         })
 
-        /*countryViewModel.oneCountry.observe(viewLifecycleOwner, Observer { countries ->
-                countries?.let { adapterC.setOneCountry(countryname!!) }
-            })
-
-        if(countryname.toString().isNotEmpty()){
-            //countryViewModel.getOneCountry(countryname)
-            adapterC.setOneCountry(countryname!!)
-            Log.d("Contaminé","Pays ${countryname}")
-
-        }else{
-            countryViewModel.allCountries.observe(viewLifecycleOwner, Observer { countries ->
-                countries?.let { adapterC.setCountries(it) }
-            })
-        }*/
-
         return root
     }
-
 
     override fun onCountryClicked(country: Country) {
         val bundle = bundleOf(
@@ -103,14 +77,5 @@ class CountryFragment : Fragment(), OnItemClickListener {
             "TOTALPER1M_KEY" to country.total_cases_per_1m_population
         )
        findNavController().navigate(R.id.fragDetailCountry, bundle)
-    }
-
-    override fun onResume() {
-        super.onResume()
-
-        //activity?.onBackPressed();
-        //findNavController().navigate(R.id.nav_home)
-        //doStuff(activity?.intent)
-        //this.findNavController().navigate(R.id.nav_home)
     }
 }

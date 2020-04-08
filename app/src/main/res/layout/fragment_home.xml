@@ -44,7 +44,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView15">
 
                 <ImageButton
-                    android:id="@+id/btIPays"
+                    android:id="@+id/btICountry"
                     android:layout_width="77dp"
                     android:layout_height="75dp"
                     android:layout_marginStart="24dp"
@@ -68,10 +68,10 @@
                     android:textColor="@color/noir"
                     android:textSize="12sp"
                     android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="@+id/btIPays"
-                    app:layout_constraintEnd_toEndOf="@+id/btIPays"
+                    app:layout_constraintBottom_toBottomOf="@+id/btICountry"
+                    app:layout_constraintEnd_toEndOf="@+id/btICountry"
                     app:layout_constraintHorizontal_bias="0.894"
-                    app:layout_constraintStart_toStartOf="@+id/btIPays"
+                    app:layout_constraintStart_toStartOf="@+id/btICountry"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="1.0" />
 
@@ -99,7 +99,7 @@
                     app:layout_constraintBottom_toTopOf="@+id/divider3"
                     app:layout_constraintEnd_toStartOf="@+id/linearLayout"
                     app:layout_constraintHorizontal_bias="0.811"
-                    app:layout_constraintStart_toEndOf="@+id/btIPays"
+                    app:layout_constraintStart_toEndOf="@+id/btICountry"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.474" />
 
@@ -213,11 +213,11 @@
                     android:layout_height="wrap_content"
                     android:text="@string/descConseil"
                     android:textSize="10sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/btIConseils"
-                    app:layout_constraintEnd_toStartOf="@+id/btIConseils"
+                    app:layout_constraintBottom_toBottomOf="@+id/btIAdvice"
+                    app:layout_constraintEnd_toStartOf="@+id/btIAdvice"
                     app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/btIConseils" />
+                    app:layout_constraintTop_toTopOf="@+id/btIAdvice" />
 
                 <TextView
                     android:id="@+id/textView13"
@@ -231,10 +231,10 @@
                     android:textColor="@color/noir"
                     android:textSize="12sp"
                     android:textStyle="bold"
-                    app:layout_constraintBottom_toTopOf="@+id/btIConseils"
+                    app:layout_constraintBottom_toTopOf="@+id/btIAdvice"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.555"
-                    app:layout_constraintStart_toStartOf="@+id/btIConseils" />
+                    app:layout_constraintStart_toStartOf="@+id/btIAdvice" />
 
                 <TextView
                     android:id="@+id/textView18"
@@ -249,7 +249,7 @@
                     app:layout_constraintStart_toStartOf="parent" />
 
                 <ImageButton
-                    android:id="@+id/btIConseils"
+                    android:id="@+id/btIAdvice"
                     android:layout_width="76dp"
                     android:layout_height="70dp"
                     android:layout_marginEnd="8dp"

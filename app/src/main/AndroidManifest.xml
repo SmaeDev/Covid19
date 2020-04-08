@@ -4,10 +4,6 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
-    <!--uses-sdk
-        android:minSdkVersion="8"
-        android:targetSdkVersion="15" /-->
-
     <application
         android:name=".ApplicationApp"
         android:allowBackup="true"
@@ -17,7 +13,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-
 
         <meta-data
             android:name="android.app.default_searchable"
@@ -42,23 +37,6 @@
                 android:name="android.app.searchable"
                 android:resource="@menu/searchable" />
         </activity>
-
-        <!--activity
-            android:name=".SearchActivity"
-            android:parentActivityName=".MainActivity">
-
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
-
-            <meta-data android:name="android.app.searchable"
-                android:resource="@menu/searchable" />
-
-            <intent-filter>
-                <action android:name="android.intent.action.SEARCH" />
-            </intent-filter>
-
-        </activity-->
 
         <meta-data
             android:name="preloaded_fonts"

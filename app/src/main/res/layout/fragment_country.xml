@@ -28,7 +28,7 @@
             android:id="@+id/recyclerviewCountry"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:background="@android:color/darker_gray"
+            android:background="@color/blanc"
             android:textColor="@color/noir"
             android:textSize="30sp"
             app:layout_constraintBottom_toBottomOf="parent"
