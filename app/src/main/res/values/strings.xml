@@ -70,4 +70,11 @@
     <string name="soutitleDetail1">Les données de</string>
     <string name="soutitleDetail2">sur le coronavirus</string>
     <string name="date">Dernière mise à jour :</string>
+    <string name="titleAdvice">Prenez des mesures pour vous protéger</string>
+
+
+
+    <string name="congrats_text">Bravooo vous êtes conncecté</string>
+    <string name="sign_out_button">Déconnexion</string>
+
 </resources>

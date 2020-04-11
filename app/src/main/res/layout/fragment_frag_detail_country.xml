@@ -8,7 +8,7 @@
     <data>
         <variable
             name="countryDetail"
-            type="com.smaedev.covi19.db.Country" />
+            type="com.smaedev.covid19.db.Country" />
     </data>
 
     <androidx.core.widget.NestedScrollView
@@ -38,6 +38,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/adamina"
             android:gravity="center|top"
+            android:padding="5dp"
             android:text="@string/titleDetail"
             android:textColor="@color/blanc"
             android:textSize="18sp"
@@ -62,6 +63,20 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvTitleDetail"
             app:layout_constraintVertical_bias="0.0" />
+
+        <ImageButton
+            android:id="@+id/btIBackDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/rougeApp"
+            app:layout_constraintBottom_toBottomOf="@+id/constraintLayout2"
+            app:layout_constraintEnd_toEndOf="@+id/constraintLayout2"
+            app:layout_constraintHorizontal_bias="0.041"
+            app:layout_constraintStart_toStartOf="@+id/constraintLayout2"
+            app:layout_constraintTop_toTopOf="@+id/constraintLayout2"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/ic_keyboard_backspace_white_24dp" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.cardview.widget.CardView

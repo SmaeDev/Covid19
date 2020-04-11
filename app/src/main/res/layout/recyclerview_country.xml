@@ -7,7 +7,7 @@
     <data>
         <variable
             name="country"
-            type="com.smaedev.covi19.db.Country" />
+            type="com.smaedev.covid19.db.Country" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

@@ -20,6 +20,5 @@
             android:id="@+id/nav_advice"
             android:icon="@drawable/ic_security_black_24dp"
             android:title="@string/menu_advice" />
-
     </group>
 </menu>

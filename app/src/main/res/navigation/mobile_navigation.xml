@@ -7,14 +7,14 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.smaedev.covi19.ui.home.HomeFragment"
+        android:name="com.smaedev.covid19.ui.home.HomeFragment"
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home">
     </fragment>
 
     <fragment
         android:id="@+id/nav_country"
-        android:name="com.smaedev.covi19.ui.country.CountryFragment"
+        android:name="com.smaedev.covid19.ui.country.CountryFragment"
         android:label="@string/menu_country"
         tools:layout="@layout/fragment_country" >
         <action
@@ -24,26 +24,27 @@
 
     <fragment
         android:id="@+id/nav_about"
-        android:name="com.smaedev.covi19.ui.about.AboutFragment"
+        android:name="com.smaedev.covid19.ui.about.AboutFragment"
         android:label="@string/menu_about"
         tools:layout="@layout/fragment_about" />
 
     <fragment
         android:id="@+id/nav_advice"
-        android:name="com.smaedev.covi19.ui.about.AboutFragment"
+        android:name="com.smaedev.covid19.advice.AdviceFragment"
         android:label="@string/menu_advice"
-    tools:layout="@layout/fragment_about" />
+        tools:layout="@layout/fragment_advice" />
+
     <fragment
         android:id="@+id/fragDetailCountry"
-        android:name="com.smaedev.covi19.ui.country.FragDetailCountry"
+        android:name="com.smaedev.covid19.ui.country.FragDetailCountry"
         android:label="fragment_frag_detail_country"
         tools:layout="@layout/fragment_frag_detail_country" />
 
     <fragment
         android:id="@+id/nav_country_search"
-        android:name="com.smaedev.covi19.ui.country.CountrySearchFragment"
+        android:name="com.smaedev.covid19.ui.country.CountrySearchFragment"
         android:label="@string/menu_country"
-        tools:layout="@layout/fragment_country_search" >
+        tools:layout="@layout/fragment_country" >
         <action
             android:id="@+id/action_nav_country_to_fragDetailCountry3"
             app:destination="@id/fragDetailCountry" />
