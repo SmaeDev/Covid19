@@ -18,7 +18,6 @@ class Country(
     val total_cases_per_1m_population: String
 
 ) {
-
     //private lateinit var country_name: String
     /*var cases: String? = null
     var deaths: String? = null

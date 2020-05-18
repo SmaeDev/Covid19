@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.provider.BaseColumns
 import android.view.Menu
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Button
 import android.widget.CursorAdapter
 import androidx.appcompat.app.AppCompatActivity
@@ -15,6 +16,9 @@ import androidx.appcompat.widget.SearchView
 import androidx.core.os.bundleOf
 import androidx.cursoradapter.widget.SimpleCursorAdapter
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
@@ -24,9 +28,14 @@ import com.google.firebase.auth.FirebaseAuth
 import com.smaedev.covid19.Connect.LoginActivity
 import com.smaedev.covid19.databinding.ActivityMainBinding
 import com.smaedev.covid19.repository.dataList
+import com.smaedev.covid19.ui.country.CountryViewModel
+
 class MainActivity : AppCompatActivity() {
 
     private var strArrData = arrayOf("No Suggestions")
+
+
+    private lateinit var countryViewModel: CountryViewModel
 
     private lateinit var cursorAdapter: SimpleCursorAdapter
     private lateinit var searchView: SearchView
@@ -57,6 +66,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         //setContentView(binding.root)
+        countryViewModel = ViewModelProvider(this).get(CountryViewModel::class.java)
+        countryViewModel.getCountries()
 
         setSupportActionBar(binding.tool.toolbar)
         supportActionBar!!.show()
@@ -87,6 +98,15 @@ class MainActivity : AppCompatActivity() {
         //val signOutButton : Button = headerView.findViewById(R.id.sign_out_button)
         signOutButton = headerView.findViewById(R.id.sign_out_button)
         setupUI()
+
+        /*val crashButton = Button(this)
+        crashButton.text = "Crash!"
+        crashButton.setOnClickListener {
+            //Crashlytics.getInstance().crash() // Force a crash
+        }
+        addContentView(crashButton, ViewGroup.LayoutParams(
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT))*/
     }
 
     private fun setupUI() {
@@ -197,4 +217,9 @@ class MainActivity : AppCompatActivity() {
        }
        backPressedTimer = System.currentTimeMillis()
     }*/
+
+
+    override fun onDestroy() {
+        super.onDestroy()
+    }
 }

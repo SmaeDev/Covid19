@@ -60,23 +60,6 @@ class AdviceCardViewAdaptater(
 
     }
 
-    /*private fun openPackDetailFragment(
-        image: String,
-        nom: String,
-        pu: Int
-    ) {
-        val fragPackA = FragPackA()
-        val data = Bundle()
-        idpack = pack.getId()
-        data.putString("idProduit", idpack.toString())
-        data.putString("TITRE_KEY", nom)
-        data.putString("IMAGE_KEY", image)
-        data.putInt("PRIX_KEY", pu)
-        fragPackA.setArguments(data)
-        MainActivity.fragmentManager.beginTransaction().replace(R.id.fragContainer, fragPackA)
-            .addToBackStack(null).commit()
-    }*/
-
     companion object {
         const val TAGpopPack = "CardViewAdaptater"
         var idpack = 0

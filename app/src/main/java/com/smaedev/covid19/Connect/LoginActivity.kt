@@ -2,15 +2,24 @@ package com.smaedev.covid19.Connect
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import com.facebook.AccessToken
+import com.facebook.CallbackManager
+import com.facebook.FacebookCallback
+import com.facebook.FacebookException
+import com.facebook.login.LoginManager
+import com.facebook.login.LoginResult
+import com.facebook.login.widget.LoginButton
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
+import com.google.firebase.auth.FacebookAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.smaedev.covid19.MainActivity
@@ -22,16 +31,26 @@ class LoginActivity : AppCompatActivity() {
     private val RC_SIGN_IN: Int = 1
     lateinit var mGoogleSignInClient: GoogleSignInClient
     lateinit var mGoogleSignInOptions: GoogleSignInOptions
-
     private lateinit var firebaseAuth: FirebaseAuth
+
+    // Initialize Facebook Login button
+    private lateinit var callbackManager: CallbackManager
+    private lateinit var buttonFacebookLogin : LoginButton
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+        firebaseAuth = FirebaseAuth.getInstance()
+
+        callbackManager = CallbackManager.Factory.create()
+        buttonFacebookLogin = findViewById(R.id.login_button);
+        buttonFacebookLogin.setPermissions("email", "public_profile");
+
         configureGoogleSignIn()
         setupUI()
-        firebaseAuth = FirebaseAuth.getInstance()
+
     }
 
     private fun configureGoogleSignIn() {
@@ -46,6 +65,23 @@ class LoginActivity : AppCompatActivity() {
         google_button.setOnClickListener {
             signIn()
         }
+
+        buttonFacebookLogin.registerCallback(callbackManager, object : FacebookCallback<LoginResult> {
+            override fun onSuccess(loginResult: LoginResult) {
+                Log.d("Facebook", "facebook:onSuccess:$loginResult")
+                handleFacebookAccessToken(loginResult.accessToken)
+            }
+
+            override fun onCancel() {
+                Log.d("Facebook", "facebook:onCancel")
+                // ...
+            }
+
+            override fun onError(error: FacebookException) {
+                Log.d("Facebook", "facebook:onError", error)
+                // ...
+            }
+        })
     }
 
     private fun signIn() {
@@ -64,19 +100,9 @@ class LoginActivity : AppCompatActivity() {
                 Toast.makeText(this, "La connexion avec Google a échouée :(", Toast.LENGTH_LONG).show()
             }
         }
-    }
 
-    //Gets an ID token, after a user successfully signs in
-    private fun firebaseAuthWithGoogle(acct: GoogleSignInAccount) {
-        val credential = GoogleAuthProvider.getCredential(acct.idToken, null)
-        firebaseAuth.signInWithCredential(credential).addOnCompleteListener {
-            if (it.isSuccessful) {
-
-                startActivity(MainActivity.getLaunchIntent(this))
-            } else {
-                Toast.makeText(this, "Connexion Google a échouée:(", Toast.LENGTH_LONG).show()
-            }
-        }
+        // Pass the activity result back to the Facebook SDK
+        callbackManager.onActivityResult(requestCode, resultCode, data)
     }
 
     //Avoid the need for the user to sign in every time the app is launched
@@ -93,5 +119,43 @@ class LoginActivity : AppCompatActivity() {
         fun getLaunchIntent(from: Context) = Intent(from, LoginActivity::class.java).apply {
             addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
         }
+    }
+
+    //Gets an ID token, after a user successfully signs in
+    private fun firebaseAuthWithGoogle(acct: GoogleSignInAccount) {
+        val credential = GoogleAuthProvider.getCredential(acct.idToken, null)
+        firebaseAuth.signInWithCredential(credential).addOnCompleteListener {
+            if (it.isSuccessful) {
+
+                startActivity(MainActivity.getLaunchIntent(this))
+            } else {
+                Toast.makeText(this, "Connexion Google a échouée:(", Toast.LENGTH_LONG).show()
+            }
+        }
+    }
+
+    private fun handleFacebookAccessToken(token: AccessToken) {
+        Log.d( "Facebook","handleFacebookAccessToken:$token")
+
+        val credential = FacebookAuthProvider.getCredential(token.token)
+        firebaseAuth.signInWithCredential(credential)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    // Sign in success, update UI with the signed-in user's information
+                    Log.d("Facebook", "signInWithCredential:success")
+                    val user = firebaseAuth.currentUser
+                    startActivity(MainActivity.getLaunchIntent(this))
+                    finish()
+                    //updateUI(user)
+                } else {
+                    // If sign in fails, display a message to the user.
+                    Log.w("Facebook", "signInWithCredential:failure", task.exception)
+                    Toast.makeText(baseContext, "Connexion Facebook échouée:(",
+                        Toast.LENGTH_SHORT).show()
+                    //updateUI(null)
+                }
+
+                // ...
+            }
     }
 }

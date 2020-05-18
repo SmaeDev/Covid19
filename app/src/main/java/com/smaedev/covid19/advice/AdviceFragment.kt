@@ -41,8 +41,6 @@ class AdviceFragment : Fragment() {
         val root = inflater.inflate(R.layout.fragment_advice, container, false)
         binding = FragmentAdviceBinding.bind(root)
         (activity as AppCompatActivity?)!!.supportActionBar!!.hide()
-        //(activity as AppCompatActivity?)!!.supportActionBar!!.title = getString(R.string.TitleCountryFrag)
-
 
         adviceViewModel =ViewModelProvider(this).get(AdviceViewModel::class.java)
         adviceViewModel.getAdvices()
@@ -52,7 +50,8 @@ class AdviceFragment : Fragment() {
         recyclerViewAdv.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         recyclerViewAdv.setHasFixedSize(true)
 
-        binding.ibtBackAdvice.setOnClickListener{findNavController().navigate(R.id.nav_home, null)}
+        //binding.ibtBackAdvice.setOnClickListener{findNavController().navigate(R.id.nav_home, null)}
+        binding.ibtBackAdvice.setOnClickListener{findNavController().navigateUp()}
 
         adviceViewModel.allAdvices.observe(viewLifecycleOwner, Observer { advices ->
             advices?.let {

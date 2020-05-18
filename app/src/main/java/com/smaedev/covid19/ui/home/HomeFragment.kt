@@ -6,18 +6,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
+import androidx.navigation.Navigation
+import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.smaedev.covid19.R
-import com.smaedev.covid19.databinding.FragmentHomeBinding
-import com.smaedev.covid19.repository.totalCases
-import com.smaedev.covid19.repository.totalCountries
-import com.smaedev.covid19.repository.totalDeath
 
 
 class HomeFragment : Fragment() {
 
     private lateinit var homeViewModel: HomeViewModel
-    private lateinit var binding: FragmentHomeBinding
+    private lateinit var bottomNavigation: BottomNavigationView
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -27,26 +25,16 @@ class HomeFragment : Fragment() {
         homeViewModel =
                 ViewModelProvider(this).get(HomeViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_home, container, false)
-        binding = FragmentHomeBinding.bind(root)
 
-        binding.tvNbPays.text = totalCountries.toString()
-        binding.tvNbCas.text = totalCases.toString()
-        binding.tvNbMorts.text = totalDeath.toString()
-        //val nbPays : String = CountryListAdapter.totalpays.toString()
-        //tvTotalPays.text = nbPays
-
-        /*val tvDeaths = binding.tvNbMorts)
-        var nbDeath : String = CountryListAdapter.totalMort.toString()
-        tvDeaths.setText(nbDeath)*/
-
-        binding.btICountry.setOnClickListener {findNavController().navigate(R.id.nav_country, null)}
-        binding.btIAdvice.setOnClickListener {findNavController().navigate(R.id.nav_advice, null)}
-        binding.btIVirus.setOnClickListener {findNavController().navigate(R.id.nav_about, null)}
-
-        binding.constraintLayoutCountry.setOnClickListener {findNavController().navigate(R.id.nav_country, null)}
-        binding.constraintLayoutAdvice.setOnClickListener {findNavController().navigate(R.id.nav_advice, null)}
-        binding.constraintLayoutVirus.setOnClickListener {findNavController().navigate(R.id.nav_about, null)}
+        bottomNavigation= root.findViewById(R.id.bottomnavigationView)
 
         return root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val navController = Navigation.findNavController(requireActivity(),R.id.nav_home_fragment_container)
+        bottomNavigation.setupWithNavController(navController)
     }
 }

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/home_bottom_navigation"
+    app:startDestination="@+id/navigation_countries"
+    tools:ignore="UnusedNavigation">
+
+    <fragment
+        android:id="@+id/navigation_countries"
+        android:name="com.smaedev.covid19.ui.country.CountryFragment"
+        android:label="@string/menu_country"
+        tools:layout="@layout/fragment_country" >
+        <action
+            android:id="@+id/action_nav_country_to_fragDetailCountry3"
+            app:destination="@id/fragDetailCountry" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_advices"
+        android:name="com.smaedev.covid19.advice.AdviceFragment"
+        android:label="@string/menu_advice"
+        tools:layout="@layout/fragment_advice" />
+
+    <fragment
+        android:id="@+id/navigation_about"
+        android:name="com.smaedev.covid19.ui.about.AboutFragment"
+        android:label="@string/menu_about"
+        tools:layout="@layout/fragment_about" />
+
+    <fragment
+        android:id="@+id/fragDetailCountry"
+        android:name="com.smaedev.covid19.ui.country.FragDetailCountry"
+        android:label="fragment_frag_detail_country"
+        tools:layout="@layout/fragment_frag_detail_country" />
+
+    <fragment
+        android:id="@+id/nav_country_search"
+        android:name="com.smaedev.covid19.ui.country.CountrySearchFragment"
+        android:label="@string/menu_country"
+        tools:layout="@layout/fragment_country" >
+        <action
+            android:id="@+id/action_nav_country_to_fragDetailCountry3"
+            app:destination="@id/fragDetailCountry" />
+    </fragment>
+</navigation>

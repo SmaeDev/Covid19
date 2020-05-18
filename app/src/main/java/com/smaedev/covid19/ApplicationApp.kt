@@ -5,6 +5,8 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import com.smaedev.covid19.db.Advice
 import com.smaedev.covid19.db.AdviceDao
 import com.smaedev.covid19.db.Country
@@ -14,6 +16,7 @@ class ApplicationApp: Application() {
 
     companion object {
         private var INSTANCE: Application? = null
+        lateinit var firebase_db: DatabaseReference
 
         fun applicationContext() : Context? {
             return INSTANCE?.applicationContext
@@ -21,6 +24,13 @@ class ApplicationApp: Application() {
     }
     init {
         INSTANCE = this
+    }
+
+    override fun onCreate() {
+        super.onCreate()
+
+        firebase_db = FirebaseDatabase.getInstance().reference
+        firebase_db.setValue("C'est ok")
     }
 }
 

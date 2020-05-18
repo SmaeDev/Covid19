@@ -2,6 +2,7 @@ package com.smaedev.covid19.repository
 
 import android.util.Log
 import androidx.lifecycle.LiveData
+import com.smaedev.covid19.ApplicationApp
 import com.smaedev.covid19.db.countries
 import com.smaedev.covid19.db.Country
 import com.smaedev.covid19.db.CountryDao
@@ -21,9 +22,14 @@ class CountryRepository(private val countryDao: CountryDao) {
 
                 val allCountries = response.body()
                 dateMAJ = response.body()?.statistic_taken_at.toString()
+                dataList.clear()
 
                 allCountries.let {
+
                     countryDao.insertAll(it!!.countries_stat)
+                    ApplicationApp.firebase_db.setValue(it.countries_stat)
+                    dataList.clear()
+
                     for(country in it.countries_stat) {
                         dataList.add(country.country_name)
                     }

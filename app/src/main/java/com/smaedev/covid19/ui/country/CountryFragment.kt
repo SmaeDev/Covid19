@@ -7,6 +7,7 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -43,7 +44,6 @@ class CountryFragment : Fragment(), OnItemClickListener {
         val binding : FragmentCountryBinding = FragmentCountryBinding.bind(root)
 
         countryViewModel =ViewModelProvider(this).get(CountryViewModel::class.java)
-        countryViewModel.getCountries()
 
         recyclerViewC = binding.recyclerviewCountry
         recyclerViewC.layoutManager = LinearLayoutManager(context)
@@ -77,6 +77,11 @@ class CountryFragment : Fragment(), OnItemClickListener {
             "ACTIVECASE_KEY" to country.active_cases,
             "TOTALPER1M_KEY" to country.total_cases_per_1m_population
         )
-       findNavController().navigate(R.id.fragDetailCountry, bundle)
+
+        Navigation.findNavController(requireActivity(), R.id.nav_host_fragment).navigate(R.id.fragDetailCountry, bundle)
+
+       //findNavController().navigate(R.id.fragDetailCountry, bundle)
     }
+
+    
 }

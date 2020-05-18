@@ -66,15 +66,27 @@
     <string name="bt">Button</string>
     <string name="enteteAccueil">Suivez l\'évolution du coronavirus en temps réel</string>
     <string name="conseilFooter">Respectez les mesures prise par votre état, pour votre sécurité !</string>
+
     <string name="TitleCountryFrag">Pays contaminés</string>
+    <string name="TitleAboutFrag">Tout sur le Covid-19</string>
+    <string name="TitleAdviceFrag">Conseils</string>
+
     <string name="soutitleDetail1">Les données de</string>
     <string name="soutitleDetail2">sur le coronavirus</string>
     <string name="date">Dernière mise à jour :</string>
     <string name="titleAdvice">Prenez des mesures pour vous protéger</string>
 
 
+    <string name="countries">Pays</string>
+    <string name="advices">Conseils</string>
+    <string name="about">A propos</string>
+
 
     <string name="congrats_text">Bravooo vous êtes conncecté</string>
     <string name="sign_out_button">Déconnexion</string>
+
+    <string name="facebook_app_id" translatable="false">752168458922040</string>
+    <string name="fb_login_protocol_scheme" translatable="false">fb752168458922040</string>
+
 
 </resources>
